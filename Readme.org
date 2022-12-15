@@ -1,0 +1,188 @@
+#+TITLE: layer-xah-fly-keys
+
+
+This package is intended to extend the xah-fly-keys package.
+
+* Table of content :TOC:
+- [[#usage][Usage]]
+  - [[#add-a-key-to-a-special-position][Add a key to a special position]]
+  - [[#change-the-default-functions-of-xah-fly-keys][Change the default functions of xah-fly-keys]]
+  - [[#automatically-change-the-mode-when-call-a-function][Automatically change the mode when call a function]]
+  - [[#shortcut-for-each-major-mode][Shortcut for each major mode]]
+  - [[#personal-keymap-with-spc-spc][Personal keymap with SPC SPC]]
+- [[#installation][Installation]]
+  - [[#straight-recommended][Straight (recommended)]]
+  - [[#install-manually-the-package][Install manually the package]]
+  - [[#melpa][MELPA]]
+
+* Usage
+
+** Add a key to a special position
+
+
+Sometimes you just want to modify / add a command. In this case you just call the function "layer-xah-fly-keys-add-keys-to-keymap-name". 
+Example: 
+
+#+begin_src emacs-lisp
+   (layer-xah-fly-keys-add-keys-to-keymap-name 'xah-fly-leader-key-map "SPC" 'layer-xah-fly-keys-personal-key-map)
+#+end_src
+
+
+
+** Change the default functions of xah-fly-keys
+
+Have you ever thought that sometimes, instead of calling the "isearch-forward" function, you would have preferred to call another function doing the same thing ? For example, consult-line ?
+
+It is now possible ! 
+This package has implemented variables, such as the "layer-xah-fly-key-isearch-forward-variable".
+There are several variables of this type, whose name corresponds to this: 
+"layer-xah-fly-key-default-function-in-xah-fly-keys-variable"
+You just have to modify this variable to call another function instead of the default function !
+To see all the others variables availables, see
+customize-group
+layer-xah-fly-keys
+
+To modify the value of theses variable, you have two possibilities : 
+
+*** Just with a setq
+
+An example is worth a thousand words:
+
+If you want the "consult-line" function instead of isearch, just do it like this : 
+
+#+begin_src emacs-lisp
+  (setq layer-xah-fly-key-isearch-forward-variable 'consult-line)
+#+end_src
+
+
+*** With the customizasion menu
+
+Do the command "customize-group", choose "layer-xah-fly-keys", and modify the variables as desired. 
+Do not hesitate to ask to add other functions.
+
+** Automatically change the mode when call a function
+
+Sometimes, after calling a command, you want to be in insert mode, or in command mode. This is possible by giving a list to the variables
+- layer-xah-fly-keys-auto-command-mode-functions (to activate the command mode after)
+- layer-xah-fly-keys-auto-insert-mode-functions (to activate the insert mode after)
+
+
+Exemple : 
+#+begin_src emacs-lisp
+
+  ;; activate the extension
+  (require 'layer-xah-fly-keys-auto-mode)
+
+  ;; chose the function
+  (setq layer-xah-fly-keys-auto-command-mode-functions
+        '(
+          dashboard-jump-to-recents
+          dashboard-jump-to-projects
+          recentf-cancel-dialog
+          dashboard-jump-to-bookmarks
+          org-agenda-show-dashboard
+          ))
+  ;; load the modification
+  (layer-xah-fly-keys-auto-command-mode-activate)
+
+  ;; chose the function
+  (setq layer-xah-fly-keys-auto-insert-mode-functions
+        '(
+          execute-extended-command-for-buffer
+          org-meta-return
+          org-insert-heading-respect-content
+          org-insert-link
+          recentf-open-files
+          ))
+  ;; load the modification
+  (layer-xah-fly-keys-auto-insert-mode-activate)
+#+end_src
+
+** Shortcut for each major mode
+
+Sometimes you want to have shortcuts specific to the mode you are using. For example, with org-mode, you would like to have the "org-meta-return" function, while in emacs-lisp-mode, it would be the "eval-defun" function.
+
+For this purpose you just need two things: which mode will take new keys, and what are those new keys ?
+
+** Personal keymap with SPC SPC
+
+A "personal" keymap is available, under the name "layer-xah-fly-keys-personal-key-map". 
+To use it, you just have to do this: 
+
+#+begin_src emacs-lisp
+
+  (require 'layer-xah-fly-keys-personal-keymap)
+
+  ;; here, you define your command with each key.
+  ;; for this example, just "RET" is used, and the key call the function "tool-bar-mode"
+  (xah-fly--define-keys
+   (define-prefix-command 'layer-xah-fly-keys-personal-key-map)
+   '(("RET" . tool-bar-mode)
+     ;; ("<up>"  . nil)
+     ;; ("<down>"  . nil)
+     ;; ("'" . nil)
+     ;; ("," . nil)
+     ;; ("." . nil)
+     ;; ("0" . nil)
+     ;; ("1" . nil)
+     ;; ("2" . nil)
+     ;; ("3" . nil)
+     ;; ("4" . nil)
+     ;; ("5" . nil)
+     ;; ("6" . nil)
+     ;; ("7" . nil)
+     ;; ("8" . nil)
+     ;; ("9" . nil)
+
+     ;; ("a" . nil)
+     ;; ("b" . nil)
+     ;; ("c" . nil)
+     ;; ("d" . nil)
+     ;; ("d" . nil)
+     ;; ("d" . nil)
+     ;; ("e" . nil)
+     ;; ("f" . nil)
+     ;; ("g" . nil)
+     ;; ("h" . nil)
+     ;; ("i" . nil)
+     ;; ("j" . nil)
+     ;; ("k" . nil)
+     ;; ("l" . nil)
+     ;; ("m" . nil)
+     ;; ("n" . nil)
+     ;; ("o" . nil)
+     ;; ("p" . nil)
+     ;; ("q" . nil)
+     ;; ("r" . nil)
+     ;; ("s" . nil)
+     ;; ("t" . nil)
+     ;; ("u" . nil)
+     ;; ("v" . nil)
+     ;; ("w" . nil)
+     ;; ("x" . nil)
+     ;; ("y" . nil)
+     ;; ("z" . nil)
+     ))
+
+
+#+end_src
+
+Basically the location is on "SPC SPC".
+You can change this position with the "layer-xah-fly-keys-add-keys-to-keymap-name" function, for example like this: 
+
+#+begin_src emacs-lisp
+(layer-xah-fly-keys-add-keys-to-keymap-name 'xah-fly-leader-key-map "n" 'layer-xah-fly-keys-personal-key-map)
+#+end_src
+
+* Installation
+
+** Straight (recommended)
+
+** Install manually the package
+
+Refer to this : [[http://xahlee.info/emacs/emacs/emacs_installing_packages.html#:~:text=Load%20the%20File%20Manually&text=To%20use%20the%20package,%20all,the%20command%20in%20the%20package.][here]].
+
+** MELPA
+
+Not available yet.
+
