@@ -84,14 +84,11 @@
   )
 
 
-;; (defvar xah-fly-keys-layer-better-place-avy-go-to-char nil "If t, replace
-;; `xah-end-of-line-or-block' by `xah-beginning-of-line-or-block'")
-
-;;try
-(when t
-  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "TAB TAB"
-					      'tool-bar-mode)
-  )
+;;try, and it's okey !
+;; (when t
+  ;; (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "TAB TAB"
+					      ;; 'tool-bar-mode)
+  ;; )
 
 (provide 'xah-fly-keys-layer-better-place)
 ;;; xah-fly-keys-layer-better-place.el ends here

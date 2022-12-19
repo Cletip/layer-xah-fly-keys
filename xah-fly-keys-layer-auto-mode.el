@@ -30,19 +30,19 @@
 
 (require 'xah-fly-keys-layer)
 
-(defvar xah-fly-keys-layer-auto-command-mode-functions '()
+(defvar xah-fly-keys-layer-auto-command-mode '()
   "List of functions to automatically call xah-fly-command-mode-activate on.")
 
-(defvar xah-fly-keys-layer-auto-insert-mode-functions '()
-  "List of functions to automatically call xah-fly-insert-mode-activate on.")
-
 (defun xah-fly-keys-layer-auto-command-mode-activate ()
-  "Wires xah-fly-command-mode-activate to all functions from cp/xfk-auto-command-mode-fns."
+  "Wires xah-fly-command-mode-activate to all functions from `xah-fly-keys-layer-auto-command-mode'"
   (dolist (element xah-fly-keys-layer-auto-command-mode-functions)
     (advice-add element :after #'xah-fly-command-mode-activate)))
 
+(defvar xah-fly-keys-layer-auto-insert-mode '()
+  "List of functions to automatically call xah-fly-insert-mode-activate on.")
+
 (defun xah-fly-keys-layer-auto-insert-mode-activate ()
-  "Wires xah-fly-insert-mode-activate to all functions from cp/xfk-auto-insert-mode-fns."
+  "Wires xah-fly-insert-mode-activate to all functions from `xah-fly-keys-layer-auto-insert-mode'"
   (dolist (element xah-fly-keys-layer-auto-insert-mode-functions)
     (advice-add element :after #'xah-fly-insert-mode-activate)))
 

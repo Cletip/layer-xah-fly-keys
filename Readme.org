@@ -61,8 +61,8 @@ Do not hesitate to ask to add other functions.
 ** Automatically change the mode when call a function
 
 Sometimes, after calling a command, you want to be in insert mode, or in command mode. This is possible by giving a list to the variables
-- xah-fly-keys-layer-auto-command-mode-functions (to activate the command mode after)
-- xah-fly-keys-layer-auto-insert-mode-functions (to activate the insert mode after)
+- xah-fly-keys-layer-auto-command-mode (to activate the command mode after)
+- xah-fly-keys-layer-auto-insert-mode (to activate the insert mode after)
 
 
 Exemple : 
@@ -72,7 +72,7 @@ Exemple :
   (require 'xah-fly-keys-layer-auto-mode)
 
   ;; chose the function
-  (setq xah-fly-keys-layer-auto-command-mode-functions
+  (setq xah-fly-keys-layer-auto-command-mode
         '(
           dashboard-jump-to-recents
           dashboard-jump-to-projects
@@ -84,7 +84,7 @@ Exemple :
   (xah-fly-keys-layer-auto-command-mode-activate)
 
   ;; chose the function
-  (setq xah-fly-keys-layer-auto-insert-mode-functions
+  (setq xah-fly-keys-layer-auto-insert-mode
         '(
           execute-extended-command-for-buffer
           org-meta-return
