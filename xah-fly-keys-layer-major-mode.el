@@ -63,7 +63,7 @@
     (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-no-major-mode))))
 
 ;; Load the right mode
-(add-to-list window-state-change-functions 'xah-fly-keys-layer-major-mode-change)
+(add-to-list 'window-state-change-functions 'xah-fly-keys-layer-major-mode-change)
 ;;old : 
 ;; (add-to-list 'window-buffer-change-functions #'cp-major-mode)
 ;; (add-to-list 'window-selection-change-functions #'cp-major-mode)
