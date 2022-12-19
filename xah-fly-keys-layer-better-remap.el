@@ -28,9 +28,11 @@
 ;; This package aim to help the user to extand xah-fly-key to map a prefix ke, 
 ;;; Code:
 
+;; (require 'xah-fly-keys-layer-better-place)
+
+
 ;; prefix key, voir le paragraphe dans Readme.org pour comprendre
 ;;changer la variable ici pour changer la touche de la major mode !
-
 
 (defun xah-fly-keys-layer-create-variable-and-function (name choices)
   "Function used to create a variable and the associated function. This allows to add the function in the keymap of xah thanks to the `xah-fly-keys-layer-add-keys-to-keymap-name` function, where the function calls directly the variable.
@@ -67,8 +69,8 @@ Function to be called instead of `%s' in xah-fly-keys.
 This function calls the function associated with the value of the variable `%s'" name name-of-the-variable)
 		 name-of-the-variable))))))
 
-(xah-fly-keys-layer-add-keys-to-keymap-name 
-'xah-fly-command-map "m" (xah-fly-keys-layer-create-variable-and-function "isearch-forward" 
+(xah-fly-keys-layer-add-keys-to-keymap-name
+'xah-fly-command-map xah-fly-keys-layer-better-place-isearch-forward-key (xah-fly-keys-layer-create-variable-and-function "isearch-forward" 
 						 '(consult-line cp/consult-ripgrep-with-directory)))
 ;; (setq layer-xah-fly-key-isearch-forward-variable 'isearch-forward)
 
@@ -85,7 +87,14 @@ This function calls the function associated with the value of the variable `%s'"
 
 (xah-fly-keys-layer-add-keys-to-keymap-name 
 'xah-fly-command-map "'" (xah-fly-keys-layer-create-variable-and-function "xah-extend-selection" 
-						 '(xah-extend-selection er/expand-region)))
+						 '(xah-extend-selection
+						   er/expand-region)))
+
+;; TODO
+(xah-fly-keys-layer-add-keys-to-keymap-name 
+'xah-fly-Rp2p1-key-map "u" (xah-fly-keys-layer-create-variable-and-function "xah-open-file-at-cursor" 
+						 '(xah-open-file-at-cursor cp/open-link)))
+
 
 
 (provide 'xah-fly-keys-layer-better-remap)

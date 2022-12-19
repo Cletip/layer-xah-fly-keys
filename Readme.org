@@ -10,6 +10,7 @@ This package is intended to extend the xah-fly-keys package.
   - [[#automatically-change-the-mode-when-call-a-function][Automatically change the mode when call a function]]
   - [[#shortcut-for-each-major-mode][Shortcut for each major mode]]
   - [[#personal-keymap-with-spc-spc][Personal keymap with SPC SPC]]
+  - [[#better-place-for-certain-shortcut][Better place for certain shortcut]]
 - [[#installation][Installation]]
   - [[#straight-recommended][Straight (recommended)]]
   - [[#install-manually-the-package][Install manually the package]]
@@ -19,15 +20,12 @@ This package is intended to extend the xah-fly-keys package.
 
 ** Add a key to a special position
 
-
 Sometimes you just want to modify / add a command. In this case you just call the function "xah-fly-keys-layer-add-keys-to-keymap-name". 
 Example: 
 
 #+begin_src emacs-lisp
    (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "SPC" 'xah-fly-keys-layer-personal-key-map)
 #+end_src
-
-
 
 ** Change the default functions of xah-fly-keys
 
@@ -241,6 +239,39 @@ You can change this position with the "xah-fly-keys-layer-add-keys-to-keymap-nam
 #+begin_src emacs-lisp
 (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "n" 'xah-fly-keys-layer-personal-key-map)
 #+end_src
+
+** Better place for certain shortcut
+
+This part is about changes in the location of some features that I find relevant. 
+You can either disagree or enable them.
+To activate the changes, you have to "activate" a variable before loading layer-xah-fly-keys".
+Like that :
+
+#+begin_src emacs-lisp
+  ;; pay attention to the "init"
+  (use-package xah-fly-keys-layer
+    :straight (xah-fly-keys-layer
+               :type git
+               :host github
+               :repo "Cletip/xah-fly-keys-layer")
+    :init
+    ;; before loading
+    (setq xah-fly-keys-layer-change-isearch-forward t)
+    (setq xah-fly-keys-layer-change-X t)
+    ;; etc
+    :config
+    ;; after loading
+    )
+#+end_src
+
+(Or make the modification and reload xah-fly-keys-layer)
+
+*** Isearch-forward
+
+
+
+
+
 
 * Installation
 

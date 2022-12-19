@@ -47,4 +47,4 @@
     (advice-add element :after #'xah-fly-insert-mode-activate)))
 
 (provide 'xah-fly-keys-layer-auto-mode)
-;;; xah-fly-keys-layer-auto-mode.el.el ends here
+;;; xah-fly-keys-layer-auto-mode.el ends here

@@ -34,7 +34,7 @@
 (defvar xah-fly-keys-layer-major-mode-key (xah-fly--convert-kbd-str "i") "Where to place the key to enter the shortcuts of the mode")
 
 (defun xah-fly-keys-layer-no-major-mode ()
-  (message "There is no custom keymap for the major mode  %s" major-mode)
+  (message "There is no custom keymap for the major mode  %s. You can do a pull request" major-mode)
   )
 
 (defun xah-fly-keys-layer-major-mode-change (&rest args)
@@ -53,7 +53,9 @@
     (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-java-mode-keymap))
    ((string-equal major-mode "c-mode")
     (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-c-mode-keymap))
-   ((or (string-equal major-mode "xah-elisp-mode") (string-equal major-mode "emacs-lisp-mode"))
+   ((string-equal major-mode "xah-elisp-mode")
+    (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-elisp-mode-keymap))
+   ((string-equal major-mode "emacs-lisp-mode")
     (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-elisp-mode-keymap))
    (t
     (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-no-major-mode))))
@@ -66,7 +68,6 @@
 ;; (add-hook 'window-selection-change-functions #'cp-major-mode)
 
 
-;; pour org-mode
 (xah-fly--define-keys
  (define-prefix-command 'xah-fly-keys-layer-org-mode-keymap)
  '(
@@ -157,9 +158,6 @@
    ("z" . org-agenda-archive)
    )
  )
-
-
-
 
 (provide 'xah-fly-keys-layer-major-mode)
 ;;; xah-fly-keys-layer-major-mode.el ends here

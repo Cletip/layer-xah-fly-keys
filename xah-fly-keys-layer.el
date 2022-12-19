@@ -53,7 +53,7 @@
 
 ;;;; Requirements
 
-;; (require 'foo)
+;; (require 'xah-fly-keys-layer-better-place)
 ;; (require 'bar)
 
 ;;;; Customization
