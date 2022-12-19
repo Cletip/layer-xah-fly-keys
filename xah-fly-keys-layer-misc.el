@@ -1,4 +1,4 @@
-;;; xah-fly-keys-layer-misc.el.el --- Auto activate command or insert mode -*- lexical-binding: t -*-
+;;; xah-fly-keys-layer-misc.el --- Auto activate command or insert mode -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021, 2022  Free Software Foundation, Inc.
 
