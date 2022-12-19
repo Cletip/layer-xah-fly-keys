@@ -29,6 +29,7 @@
 ;;; Code:
 
 (require 'xah-fly-keys-layer)
+(require 'xah-fly-keys)
 
 ;; Spc Spc
 (xah-fly--define-keys

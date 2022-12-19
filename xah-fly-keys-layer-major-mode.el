@@ -31,6 +31,8 @@
 ;; prefix key, voir le paragraphe dans Readme.org pour comprendre
 ;;changer la variable ici pour changer la touche de la major mode !
 
+(require 'xah-fly-keys)
+
 (defvar xah-fly-keys-layer-major-mode-key (xah-fly--convert-kbd-str "i") "Where to place the key to enter the shortcuts of the mode")
 
 (defun xah-fly-keys-layer-no-major-mode ()
