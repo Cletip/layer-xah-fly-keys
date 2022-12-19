@@ -35,7 +35,11 @@ xah-fly-keys can do the job exactly like <enter> too")
 
 (message "xah-fly-keys-layer-misc-enter-open-line = %s" xah-fly-keys-layer-misc-enter-open-line)
 
-(defun xah-fly-keys-layer-misc-enter-open-line-function (_x)
+
+
+(when xah-fly-keys-layer-misc-enter-open-line
+
+  (defun xah-fly-keys-layer-misc-enter-open-line (_x)
     "DOCSTRING"
     (interactive)
     (define-key xah-fly-command-map (xah-fly--convert-kbd-str "o")
@@ -46,9 +50,8 @@ xah-fly-keys can do the job exactly like <enter> too")
               )
           (kbd "RET")
 	'open-line)))
-
-(when xah-fly-keys-layer-misc-enter-open-line
-  (add-hook 'window-state-change-functions 'xah-fly-keys-layer-misc-enter-open-line-function))
+  
+  (add-to-list 'window-state-change-functions 'xah-fly-keys-layer-misc-enter-open-line))
 
 
 (provide 'xah-fly-keys-layer-misc)
