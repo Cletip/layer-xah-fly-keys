@@ -76,7 +76,7 @@ This function calls the function associated with the value of the variable `%s'"
 
 
 (xah-fly-keys-layer-add-keys-to-keymap-name
- 'xah-fly-Rp2p1-key-map "h"
+ 'xah-fly-leader-key-map "c h"
  (xah-fly-keys-layer-create-variable-and-function "recentf-open-files"
 						  '(recentf-open-files consult-recent-file)))
 
@@ -92,7 +92,7 @@ This function calls the function associated with the value of the variable `%s'"
 
 ;; TODO
 (xah-fly-keys-layer-add-keys-to-keymap-name 
-'xah-fly-Rp2p1-key-map "u" (xah-fly-keys-layer-create-variable-and-function "xah-open-file-at-cursor" 
+'xah-fly-leader-key-map "c u" (xah-fly-keys-layer-create-variable-and-function "xah-open-file-at-cursor" 
 						 '(xah-open-file-at-cursor cp/open-link)))
 
 
