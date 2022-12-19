@@ -5,7 +5,7 @@
 ;; Author: First Last <name@example.com>
 ;; URL: https://example.com/xah-fly-keys-layer.el
 ;; Version: 0.1-pre
-;; Package-Requires: ((emacs "25.2") (xah-fly-keys "22.3.20221211131110") (dash "2.18.1"))
+;; Package-Requires: ((emacs "25.2") (xah-fly-keys "22.3.20221211131110"))
 ;; Keywords: something
 
 ;; This file is not part of GNU Emacs.

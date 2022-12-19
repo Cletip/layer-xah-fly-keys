@@ -244,7 +244,23 @@ You can change this position with the "xah-fly-keys-layer-add-keys-to-keymap-nam
 
 * Installation
 
+You need to install and load xah-fly-keys first !
+Like that : 
+#+begin_src emacs-lisp
+  (use-package xah-fly-keys
+    :straight (xah-fly-keys
+               :type git
+               :host github
+               :repo "xahlee/xah-fly-keys")
+    :config
+    ;;rest of the config here)
+#+end_src
+
+If you install manually, pay attention to install the last version of xah-fly-keys !
+
 ** Straight (recommended)
+
+
 
 #+begin_src emacs-lisp
   (use-package xah-fly-keys-layer
