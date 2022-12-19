@@ -99,8 +99,6 @@ be evaluated using `eval' before it is added to KEYMAPNAME."
 
 ;;;; Footer
 
-(require)
-
 (provide 'xah-fly-keys-layer)
 
 ;;; xah-fly-keys-layer.el ends here
