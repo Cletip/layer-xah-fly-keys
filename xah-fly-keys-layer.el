@@ -87,7 +87,7 @@ be evaluated using `eval' before it is added to KEYMAPNAME."
   (eval
    `(define-key
       ,KeymapName
-      (kbd (,(if DirectQ #'identity #'xah-fly--key-char)
+      (kbd (,(if DirectQ #'identity #'xah-fly--convert-kbd-str)
             ,place
             ))
       ,(list 'quote command))))

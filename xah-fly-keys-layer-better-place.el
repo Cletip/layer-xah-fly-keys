@@ -45,9 +45,6 @@
    'xah-fly-command-map xah-fly-keys-layer-place-isearch-forward
    'isearch-forward))
 
-
-
-
 ;; to relieve the pinky.
 (defvar xah-fly-keys-layer-better-place-for-pinky-parens nil "If t, switch
 `xah-forward-right-bracket', `xah-backward-left-bracket' and `xah-goto-matching-bracket'")
@@ -63,11 +60,20 @@
 (defvar xah-fly-keys-layer-better-place-for-pinky-block nil "If t, switch
 `xah-end-of-line-or-block' and `xah-beginning-of-line-or-block'")
 
-(when xah-fly-keys-layer-better-place-for-pinky-parens
+(when xah-fly-keys-layer-better-place-for-pinky-block
   (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-command-map "d"
 					      'xah-end-of-line-or-block)
   (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-command-map "s"
 					      'xah-beginning-of-line-or-block))
+
+
+(defvar xah-fly-keys-layer-better-place-tab-key-map nil "If t, map
+`xah-fly--tab-key-map' in SPC k (it's unbound)")
+
+(when xah-fly-keys-layer-better-place-tab-key-map
+  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "k"
+					      'xah-fly--tab-key-map)
+  )
 
 ;;TODO
 (defvar xah-fly-keys-layer-better-place-avy-go-to-char nil "If t, replace
@@ -76,14 +82,6 @@
 (when xah-fly-keys-layer-better-place-avy-go-to-char
   (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "s"
 					      'avy-goto-char-2)
-  )
-
-(defvar xah-fly-keys-layer-better-place-tab-key-map nil "If t, map
-`xah-fly--tab-key-map' in SPC k (it's unbound)")
-
-(when xah-fly-keys-layer-better-place-tab-key-map
-  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "k"
-					      'xah-fly--tab-key-map)
   )
 
 (provide 'xah-fly-keys-layer-better-place)
