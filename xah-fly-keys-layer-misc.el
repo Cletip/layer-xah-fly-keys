@@ -33,7 +33,7 @@
 (defvar xah-fly-keys-layer-misc-enter-open-line nil "When t, open-line in
 xah-fly-keys can do the job exactly like <enter> too")
 
-(defvar test nil "Just a try")
+(message "xah-fly-keys-layer-misc-enter-open-line = %s" xah-fly-keys-layer-misc-enter-open-line)
 
 (when xah-fly-keys-layer-misc-enter-open-line
 
