@@ -1,4 +1,4 @@
-;;; xah-fly-keys-layer-misc.el --- Auto activate command or insert mode -*- lexical-binding: t -*-
+;;; xah-fly-keys-layer-misc.el --- Key-binding for each mode in xah-fly-keys -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021, 2022  Free Software Foundation, Inc.
 
@@ -26,13 +26,14 @@
 ;;; Commentary:
 
 ;; This package adds various useful features to xah-fly-keys
-
 ;;; Code:
 
 (require 'xah-fly-keys)
 
 (defvar xah-fly-keys-layer-misc-enter-open-line nil "When t, open-line in
 xah-fly-keys can do the job exactly like <enter> too")
+
+(defvar test nil "Just a try")
 
 (when xah-fly-keys-layer-misc-enter-open-line
 
@@ -49,7 +50,6 @@ xah-fly-keys can do the job exactly like <enter> too")
 	'open-line)))
 
   (add-to-list 'window-state-change-functions 'xah-fly-keys-layer-misc-enter-open-line))
-
 
 
 (provide 'xah-fly-keys-layer-misc)
