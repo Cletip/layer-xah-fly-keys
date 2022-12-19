@@ -48,7 +48,7 @@ xah-fly-keys can do the job exactly like <enter> too")
           (kbd "RET")
 	'open-line)))
 
-  (add-to-list 'window-state-change-functions xah-fly-keys-layer-misc-enter-open-line))
+  (add-to-list 'window-state-change-functions 'xah-fly-keys-layer-misc-enter-open-line))
 
 
 
