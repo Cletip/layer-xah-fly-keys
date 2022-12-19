@@ -39,8 +39,8 @@
   "Where is the function to search in a file")
 
 (when xah-fly-keys-layer-better-place-isearch-forward
-  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-command-map "n"
-					      'xah-goto-matching-bracket)
+  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-command-map "b"
+					      'xah-forward-right-bracket)
   (xah-fly-keys-layer-add-keys-to-keymap-name
    'xah-fly-command-map xah-fly-keys-layer-better-place-isearch-forward-key
    'isearch-forward))
