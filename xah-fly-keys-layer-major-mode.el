@@ -1,4 +1,4 @@
-;;; layer-xah-fly-keys-major-mode.el --- Key-binding for each mode in xah-fly-keys -*- lexical-binding: t -*-
+;;; xah-fly-keys-layer-major-mode.el --- Key-binding for each mode in xah-fly-keys -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021, 2022  Free Software Foundation, Inc.
 
@@ -6,7 +6,7 @@
 ;; Maintainer: Payard Clément <payard.clement63@gmail.com>
 ;; Created: 2022
 ;; Version: 0.1
-;; Package-Requires: ((emacs "27.1") (layer-xah-fly-keys "0.1"))
+;; Package-Requires: ((emacs "27.1") (xah-fly-keys-layer "0.1"))
 
 ;; This file is part of GNU Emacs.
 
@@ -31,35 +31,35 @@
 ;; prefix key, voir le paragraphe dans Readme.org pour comprendre
 ;;changer la variable ici pour changer la touche de la major mode !
 
-(defvar layer-xah-fly-keys-major-mode-key (xah-fly--convert-kbd-str "i") "Where to place the key to enter the shortcuts of the mode")
+(defvar xah-fly-keys-layer-major-mode-key (xah-fly--convert-kbd-str "i") "Where to place the key to enter the shortcuts of the mode")
 
-(defun layer-xah-fly-keys-no-major-mode ()
+(defun xah-fly-keys-layer-no-major-mode ()
   (message "There is no custom keymap for the major mode  %s" major-mode)
   )
 
-(defun layer-xah-fly-keys-major-mode-change (&rest args)
+(defun xah-fly-keys-layer-major-mode-change (&rest args)
   "Call different commands depending on what's current major mode."
   (interactive)
   ;;pour que ça marche, necessite un argument utilisé ici. Mais enlevé avec les autres messages pour pas que se soit moche
   ;; (message "wrapper called %s" args)
   (cond
    ((string-equal major-mode "minibuffer-mode")
-    (define-key xah-fly-command-map (kbd layer-xah-fly-keys-major-mode-key) 'layer-xah-fly-keys-minibuffer-mode-keymap))
+    (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-minibuffer-mode-keymap))
    ((string-equal major-mode "org-mode")
-    (define-key xah-fly-command-map (kbd layer-xah-fly-keys-major-mode-key) 'layer-xah-fly-keys-org-mode-keymap))
+    (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-org-mode-keymap))
    ((string-equal major-mode "org-agenda-mode")
-    (define-key xah-fly-command-map (kbd layer-xah-fly-keys-major-mode-key) 'layer-xah-fly-keys-org-agenda-mode-keymap))
+    (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-org-agenda-mode-keymap))
    ((string-equal major-mode "java-mode")
-    (define-key xah-fly-command-map (kbd layer-xah-fly-keys-major-mode-key) 'layer-xah-fly-keys-java-mode-keymap))
+    (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-java-mode-keymap))
    ((string-equal major-mode "c-mode")
-    (define-key xah-fly-command-map (kbd layer-xah-fly-keys-major-mode-key) 'layer-xah-fly-keys-c-mode-keymap))
+    (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-c-mode-keymap))
    ((or (string-equal major-mode "xah-elisp-mode") (string-equal major-mode "emacs-lisp-mode"))
-    (define-key xah-fly-command-map (kbd layer-xah-fly-keys-major-mode-key) 'layer-xah-fly-keys-elisp-mode-keymap))
+    (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-elisp-mode-keymap))
    (t
-    (define-key xah-fly-command-map (kbd layer-xah-fly-keys-major-mode-key) 'layer-xah-fly-keys-no-major-mode))))
+    (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-no-major-mode))))
 
 ;; Load the right mode
-(setq window-state-change-functions '(layer-xah-fly-keys-major-mode-change))
+(setq window-state-change-functions '(xah-fly-keys-layer-major-mode-change))
 ;;old : 
 ;; (add-to-list 'window-buffer-change-functions #'cp-major-mode)
 ;; (add-to-list 'window-selection-change-functions #'cp-major-mode)
@@ -68,7 +68,7 @@
 
 ;; pour org-mode
 (xah-fly--define-keys
- (define-prefix-command 'layer-xah-fly-keys-org-mode-keymap)
+ (define-prefix-command 'xah-fly-keys-layer-org-mode-keymap)
  '(
 
    ("SPC" . org-mode-babel-keymap)
@@ -122,7 +122,7 @@
 
 ;; org-agenda
 (xah-fly--define-keys
- (define-prefix-command 'layer-xah-fly-keys-org-agenda-mode-keymap)
+ (define-prefix-command 'xah-fly-keys-layer-org-agenda-mode-keymap)
  '(
    ;; ("a" . mark-whole-buffer)
    ;; ("b" . end-of-buffer)
@@ -161,5 +161,5 @@
 
 
 
-(provide 'layer-xah-fly-keys-major-mode)
-;;; layer-xah-fly-keys-major-mode.el ends here
+(provide 'xah-fly-keys-layer-major-mode)
+;;; xah-fly-keys-layer-major-mode.el ends here

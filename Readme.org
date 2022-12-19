@@ -1,4 +1,4 @@
-#+TITLE: layer-xah-fly-keys
+#+TITLE: xah-fly-keys-layer
 
 
 This package is intended to extend the xah-fly-keys package.
@@ -20,11 +20,11 @@ This package is intended to extend the xah-fly-keys package.
 ** Add a key to a special position
 
 
-Sometimes you just want to modify / add a command. In this case you just call the function "layer-xah-fly-keys-add-keys-to-keymap-name". 
+Sometimes you just want to modify / add a command. In this case you just call the function "xah-fly-keys-layer-add-keys-to-keymap-name". 
 Example: 
 
 #+begin_src emacs-lisp
-   (layer-xah-fly-keys-add-keys-to-keymap-name 'xah-fly-leader-key-map "SPC" 'layer-xah-fly-keys-personal-key-map)
+   (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "SPC" 'xah-fly-keys-layer-personal-key-map)
 #+end_src
 
 
@@ -40,7 +40,7 @@ There are several variables of this type, whose name corresponds to this:
 You just have to modify this variable to call another function instead of the default function !
 To see all the others variables availables, see
 customize-group
-layer-xah-fly-keys
+xah-fly-keys-layer
 
 To modify the value of theses variable, you have two possibilities : 
 
@@ -57,24 +57,24 @@ If you want the "consult-line" function instead of isearch, just do it like this
 
 *** With the customizasion menu
 
-Do the command "customize-group", choose "layer-xah-fly-keys", and modify the variables as desired. 
+Do the command "customize-group", choose "xah-fly-keys-layer", and modify the variables as desired. 
 Do not hesitate to ask to add other functions.
 
 ** Automatically change the mode when call a function
 
 Sometimes, after calling a command, you want to be in insert mode, or in command mode. This is possible by giving a list to the variables
-- layer-xah-fly-keys-auto-command-mode-functions (to activate the command mode after)
-- layer-xah-fly-keys-auto-insert-mode-functions (to activate the insert mode after)
+- xah-fly-keys-layer-auto-command-mode-functions (to activate the command mode after)
+- xah-fly-keys-layer-auto-insert-mode-functions (to activate the insert mode after)
 
 
 Exemple : 
 #+begin_src emacs-lisp
 
   ;; activate the extension
-  (require 'layer-xah-fly-keys-auto-mode)
+  (require 'xah-fly-keys-layer-auto-mode)
 
   ;; chose the function
-  (setq layer-xah-fly-keys-auto-command-mode-functions
+  (setq xah-fly-keys-layer-auto-command-mode-functions
         '(
           dashboard-jump-to-recents
           dashboard-jump-to-projects
@@ -83,10 +83,10 @@ Exemple :
           org-agenda-show-dashboard
           ))
   ;; load the modification
-  (layer-xah-fly-keys-auto-command-mode-activate)
+  (xah-fly-keys-layer-auto-command-mode-activate)
 
   ;; chose the function
-  (setq layer-xah-fly-keys-auto-insert-mode-functions
+  (setq xah-fly-keys-layer-auto-insert-mode-functions
         '(
           execute-extended-command-for-buffer
           org-meta-return
@@ -95,7 +95,7 @@ Exemple :
           recentf-open-files
           ))
   ;; load the modification
-  (layer-xah-fly-keys-auto-insert-mode-activate)
+  (xah-fly-keys-layer-auto-insert-mode-activate)
 #+end_src
 
 ** Shortcut for each major mode
@@ -104,19 +104,87 @@ Sometimes you want to have shortcuts specific to the mode you are using. For exa
 
 For this purpose you just need two things: which mode will take new keys, and what are those new keys ?
 
+Each mode (the modes supported in this package) already has basic shortcuts. 
+You can override them just by doing this (ici, exemple pour org-mode):
+
+#+begin_src emacs-lisp
+  (xah-fly--define-keys
+   (define-prefix-command 'xah-fly-keys-layer-org-mode-keymap)
+   '(
+     ("SPC" . org-mode-babel-keymap)
+
+     ;; ("-" . "^") 
+     ("'" . org-table-create-or-convert-from-region)
+     ("," . org-mark-element)
+     ("." . org-todo)
+     (";" . org-toggle-narrow-to-subtree)
+     ;; ("/" . "x")
+
+     ;; ("[" . "=")
+     ;; ("]" . "%")
+
+     ;; ("=" . "ç")
+
+     ("a" . org-export-dispatch)
+     ;; ("b" . org-goto)
+     ("b" . consult-org-heading) ;; mieux
+     ("c" . org-insert-link)
+     ("L" . org-store-link)
+     ("d" . org-mode-keymap-movement)
+     ("e" . org-meta-return)
+     ;; ("E" . org-insert-todo-heading)
+     ("f" . org-roam-ref-add)
+     ("g" . org-roam-buffer-toggle)
+     ("h" . vulpea-insert)
+     ;; ("i" . ",")
+     ("j" . org-deadline)
+     ("k" . org-schedule)
+     ("l" . "cp-vulpea-buffer-tags-remove-BROUILLON")
+     ;; ("m" . org-insert-todo-heading)
+     ("n" . vulpea-tags-add)
+     ("o" . org-refile)
+     ("p" . org-set-tags-command)
+     ("q" . org-sort)
+     ("r" . vulpea-meta-add)
+     ("s" . citar-insert-citation)
+     ;; ("t" . vulpea-find-backlink)
+     ;; ("u" . org-capture-keymap) ;; TODO, mis dans SPC SPC
+     ;; ("u" . org-capture)  ;; TODO changer
+   
+     ("v" . org-insert-todo-heading)
+     ;; ("v" . cp-vulpea-meta-fait-add)
+     ("w" . consult-org-roam-forward-links)
+     ("x" . org-time-stamp)
+     ;; ("y" . "b")
+     ;; ("z" . "v")
+     ))
+#+end_src
+
+If you want to add a particular mode, make a pull request for the mode in question, and propagate an arrangement of the keys for the functions. 
+
 ** Personal keymap with SPC SPC
 
-A "personal" keymap is available, under the name "layer-xah-fly-keys-personal-key-map". 
-To use it, you just have to do this: 
+A "personal" keymap is available, under the name "xah-fly-keys-layer-personal-key-map". 
+A default patern is available, but it may not be suitable for your needs.
+
+To use it :
+
+#+begin_src emacs-lisp
+  ;; load the extension
+  (require 'xah-fly-keys-layer-personal-keymap)
+#+end_src
+
+To overidde the default patern, you just have to do this: 
 
 #+begin_src emacs-lisp
 
-  (require 'layer-xah-fly-keys-personal-keymap)
+  ;; load the extension
+  (require 'xah-fly-keys-layer-personal-keymap)
 
   ;; here, you define your command with each key.
   ;; for this example, just "RET" is used, and the key call the function "tool-bar-mode"
   (xah-fly--define-keys
-   (define-prefix-command 'layer-xah-fly-keys-personal-key-map)
+   (define-prefix-command 'xah-fly-keys-layer-personal-key-map)
    '(("RET" . tool-bar-mode)
      ;; ("<up>"  . nil)
      ;; ("<down>"  . nil)
@@ -168,15 +236,20 @@ To use it, you just have to do this:
 #+end_src
 
 Basically the location is on "SPC SPC".
-You can change this position with the "layer-xah-fly-keys-add-keys-to-keymap-name" function, for example like this: 
+You can change this position with the "xah-fly-keys-layer-add-keys-to-keymap-name" function, for example like this: 
 
 #+begin_src emacs-lisp
-(layer-xah-fly-keys-add-keys-to-keymap-name 'xah-fly-leader-key-map "n" 'layer-xah-fly-keys-personal-key-map)
+(xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "n" 'xah-fly-keys-layer-personal-key-map)
 #+end_src
 
 * Installation
 
 ** Straight (recommended)
+
+#+begin_src emacs-lisp
+  (use-package xah-fly-keys-layer
+    :straight (xah-fly-keys-layer :type git :host github :repo "Cletip/xah-fly-keys-layer"))
+#+end_src
 
 ** Install manually the package
 

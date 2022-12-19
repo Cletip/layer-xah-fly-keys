@@ -1,4 +1,4 @@
-;;; layer-xah-fly-keys-personal-keymap.el --- Key-binding for each mode in xah-fly-keys -*- lexical-binding: t -*-
+;;; xah-fly-keys-layer-personal-keymap.el --- Key-binding for each mode in xah-fly-keys -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021, 2022  Free Software Foundation, Inc.
 
@@ -6,7 +6,7 @@
 ;; Maintainer: Payard Clément <payard.clement63@gmail.com>
 ;; Created: 2022
 ;; Version: 0.1
-;; Package-Requires: ((emacs "27.1") (layer-xah-fly-keys "0.1"))
+;; Package-Requires: ((emacs "27.1") (xah-fly-keys-layer "0.1"))
 
 ;; This file is part of GNU Emacs.
 
@@ -28,11 +28,11 @@
 ;; This package provides, on SPC SPC, an additional configuration layer for the user
 ;;; Code:
 
-(require 'layer-xah-fly-keys)
+(require 'xah-fly-keys-layer)
 
 ;; Spc Spc
 (xah-fly--define-keys
- (define-prefix-command 'layer-xah-fly-keys-personal-key-map)
+ (define-prefix-command 'xah-fly-keys-layer-personal-key-map)
  '(
    ;; ("RET" . nil)
    ;; ("<up>"  . nil)
@@ -81,8 +81,8 @@
    ;; ("z" . nil)
    ))
 
-;; add the personnal keymap
-(layer-xah-fly-keys-add-keys-to-keymap-name 'xah-fly-leader-key-map "SPC" 'layer-xah-fly-keys-personal-key-map)
+;; add the personnal keymap to SPC SPC
+(xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "SPC" 'xah-fly-keys-layer-personal-key-map)
 
-(provide 'layer-xah-fly-keys-personal-keymap)
-;;; layer-xah-fly-keys-personal-keymap.el ends here
+(provide 'xah-fly-keys-layer-personal-keymap)
+;;; xah-fly-keys-layer-personal-keymap.el ends here

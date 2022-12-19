@@ -1,4 +1,4 @@
-;;; layer-xah-fly-keys-auto-mode.el --- Auto activate command or insert mode -*- lexical-binding: t -*-
+;;; xah-fly-keys-layer-auto-mode.el --- Auto activate command or insert mode -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021, 2022  Free Software Foundation, Inc.
 
@@ -6,7 +6,7 @@
 ;; Maintainer: Payard Clément <payard.clement63@gmail.com>
 ;; Created: 2022
 ;; Version: 0.1
-;; Package-Requires: ((emacs "27.1") (layer-xah-fly-keys "0.1"))
+;; Package-Requires: ((emacs "27.1") (xah-fly-keys-layer "0.1"))
 
 ;; This file is part of GNU Emacs.
 
@@ -28,23 +28,23 @@
 ;; This package is intended to provide the user with functions to enable or disable the insertion or control mode of xah-fly-keys automatically
 ;;; Code:
 
-(require 'layer-xah-fly-keys)
+(require 'xah-fly-keys-layer)
 
-(defvar layer-xah-fly-keys-auto-command-mode-functions '()
+(defvar xah-fly-keys-layer-auto-command-mode-functions '()
   "List of functions to automatically call xah-fly-command-mode-activate on.")
 
-(defvar layer-xah-fly-keys-auto-insert-mode-functions '()
+(defvar xah-fly-keys-layer-auto-insert-mode-functions '()
   "List of functions to automatically call xah-fly-insert-mode-activate on.")
 
-(defun layer-xah-fly-keys-auto-command-mode-activate ()
+(defun xah-fly-keys-layer-auto-command-mode-activate ()
   "Wires xah-fly-command-mode-activate to all functions from cp/xfk-auto-command-mode-fns."
-  (dolist (element layer-xah-fly-keys-auto-command-mode-functions)
+  (dolist (element xah-fly-keys-layer-auto-command-mode-functions)
     (advice-add element :after #'xah-fly-command-mode-activate)))
 
-(defun layer-xah-fly-keys-auto-insert-mode-activate ()
+(defun xah-fly-keys-layer-auto-insert-mode-activate ()
   "Wires xah-fly-insert-mode-activate to all functions from cp/xfk-auto-insert-mode-fns."
-  (dolist (element layer-xah-fly-keys-auto-insert-mode-functions)
+  (dolist (element xah-fly-keys-layer-auto-insert-mode-functions)
     (advice-add element :after #'xah-fly-insert-mode-activate)))
 
-(provide 'layer-xah-fly-keys-auto-mode)
-;;; layer-xah-fly-keys-auto-mode.el.el ends here
+(provide 'xah-fly-keys-layer-auto-mode)
+;;; xah-fly-keys-layer-auto-mode.el.el ends here
