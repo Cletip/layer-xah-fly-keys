@@ -86,7 +86,7 @@ This function calls the function associated with the value of the variable `%s'"
 						   flyspell-correct-wrapper)))
 
 (xah-fly-keys-layer-add-keys-to-keymap-name 
-'xah-fly-command-map "'" (xah-fly-keys-layer-create-variable-and-function "xah-extend-selection" 
+'xah-fly-command-map "8" (xah-fly-keys-layer-create-variable-and-function "xah-extend-selection" 
 						 '(xah-extend-selection
 						   er/expand-region)))
 
