@@ -33,10 +33,6 @@
 (defvar xah-fly-keys-layer-misc-enter-open-line nil "When t, open-line in
 xah-fly-keys can do the job exactly like <enter> too")
 
-(message "xah-fly-keys-layer-misc-enter-open-line = %s" xah-fly-keys-layer-misc-enter-open-line)
-
-
-
 (when xah-fly-keys-layer-misc-enter-open-line
 
   (defun xah-fly-keys-layer-misc-enter-open-line (_x)
@@ -50,7 +46,7 @@ xah-fly-keys can do the job exactly like <enter> too")
               )
           (kbd "RET")
 	'open-line)))
-  
+
   (add-to-list 'window-state-change-functions 'xah-fly-keys-layer-misc-enter-open-line))
 
 
