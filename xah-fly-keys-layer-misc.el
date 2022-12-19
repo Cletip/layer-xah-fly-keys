@@ -35,15 +35,20 @@
 xah-fly-keys can do the job exactly like <enter> too")
 
 (when xah-fly-keys-layer-misc-enter-open-line
-  (add-to-list 'window-state-change-functions (lambda (_x)
-						(define-key xah-fly-command-map (xah-fly--convert-kbd-str "o")
-						  (if (or buffer-read-only
-							  (string-equal major-mode "minibuffer-mode")
-							  ;; (string-equal major-mode "org-agenda-mode")
-							  ;; (string-equal major-mode "fundamental-mode")
-							  )
-						      (kbd "RET")
-						    'open-line)))))
+
+  (defun xah-fly-keys-layer-misc-enter-open-line (_x)
+    "DOCSTRING"
+    (interactive)
+    (define-key xah-fly-command-map (xah-fly--convert-kbd-str "o")
+      (if (or buffer-read-only
+              (string-equal major-mode "minibuffer-mode")
+              ;; (string-equal major-mode "org-agenda-mode")
+              ;; (string-equal major-mode "fundamental-mode")
+              )
+          (kbd "RET")
+	'open-line)))
+
+  (add-to-list 'window-state-change-functions xah-fly-keys-layer-misc-enter-open-line))
 
 
 
