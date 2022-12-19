@@ -38,6 +38,8 @@
   (dolist (element xah-fly-keys-layer-auto-command-mode)
     (advice-add element :after #'xah-fly-command-mode-activate)))
 
+(xah-fly-keys-layer-auto-command-mode-activate)
+
 (defvar xah-fly-keys-layer-auto-insert-mode '()
   "List of functions to automatically call xah-fly-insert-mode-activate on.")
 
@@ -45,6 +47,8 @@
   "Wires xah-fly-insert-mode-activate to all functions from `xah-fly-keys-layer-auto-insert-mode'"
   (dolist (element xah-fly-keys-layer-auto-insert-mode)
     (advice-add element :after #'xah-fly-insert-mode-activate)))
+
+(xah-fly-keys-layer-auto-insert-mode-activate)
 
 (provide 'xah-fly-keys-layer-auto-mode)
 ;;; xah-fly-keys-layer-auto-mode.el ends here
