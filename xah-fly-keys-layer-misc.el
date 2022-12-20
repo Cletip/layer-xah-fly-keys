@@ -54,17 +54,16 @@ mode in xah-fly-keys, the buffer is saved")
 
 (when xah-fly-keys-layer-misc-autosave
 
-  (defvar xah-fly-keys-layer-misc-autosave-exclude '(gpg test) "List of mode to
+  (defvar xah-fly-keys-layer-misc-autosave-exclude-mode '(gpg) "List of mode to
 exclude the auto-save functionnality of xah-fly-keys-layer-misc")
 
   (defun xah-fly-keys-layer-misc-autosave ()
     "Save current buffer if it's a file and if the current mode is not in the
-    list of `xah-fly-keys-layer-misc-save-mode-exclude'"
-    (interactive)
+    list of `xah-fly-keys-layer-misc-autosave-exclude-mode'"
     (when (and
 	   (buffer-file-name) ;;check if it's a file
 	   ;; (not (string-equal (file-name-extension buffer-file-name) "gpg"))
-	   (not (member major-mode xah-fly-keys-layer-misc-save-mode-exclude))) ;; check
+	   (not (member major-mode xah-fly-keys-layer-misc-autosave-exclude-mode))) ;; check
       ;;if it's not in the list
       (save-buffer)))
 

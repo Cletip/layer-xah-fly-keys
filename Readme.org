@@ -291,6 +291,7 @@ Modify the key for ~open-line~ in xah-fly-keys to do exactly the same job of <en
 
 #+begin_src emacs-lisp
   ;; change variable before require the extension
+  (setq xah-fly-keys-layer-misc-autosave-exclude-mode '(gpg)) ;;list of mode to exclude for the autosave
   (setq xah-fly-keys-layer-misc-autosave t)
   (require 'xah-fly-keys-layer-misc)
 #+end_src
