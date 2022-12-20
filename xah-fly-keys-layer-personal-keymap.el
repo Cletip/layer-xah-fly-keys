@@ -83,7 +83,7 @@
    ))
 
 ;; add the personnal keymap to SPC SPC
-(xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "SPC" 'xah-fly-keys-layer-personal-key-map)
+(xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "SPC" 'xah-fly-keys-layer-personal-key-map)
 
 (provide 'xah-fly-keys-layer-personal-keymap)
 ;;; xah-fly-keys-layer-personal-keymap.el ends here

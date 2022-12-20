@@ -34,7 +34,7 @@
 ;; prefix key, voir le paragraphe dans Readme.org pour comprendre
 ;;changer la variable ici pour changer la touche de la major mode !
 (defun xah-fly-keys-layer-create-variable-and-function (name choices)
-  "Function used to create a variable and the associated function. This allows to add the function in the keymap of xah thanks to the `xah-fly-keys-layer-add-keys-to-keymap-name` function, where the function calls directly the variable.
+  "Function used to create a variable and the associated function. This allows to add the function in the keymap of xah thanks to the `xah-fly-keys-layer-add-keys-to-keymap` function, where the function calls directly the variable.
 Moreover, this variable allows to let the user choose the function to call via
   the customization menu.
 Return the symbol of the function.
@@ -68,29 +68,29 @@ Function to be called instead of `%s' in xah-fly-keys.
 This function calls the function associated with the value of the variable `%s'" name name-of-the-variable)
 		 name-of-the-variable))))))
 
-(xah-fly-keys-layer-add-keys-to-keymap-name
+(xah-fly-keys-layer-add-keys-to-keymap
  'xah-fly-command-map xah-fly-keys-layer-better-place-isearch-forward-key
  (xah-fly-keys-layer-create-variable-and-function "isearch-forward"
 						  '(consult-line cp/consult-ripgrep-with-directory)))
 ;; (setq layer-xah-fly-key-isearch-forward-variable 'isearch-forward)
 
 
-(xah-fly-keys-layer-add-keys-to-keymap-name
+(xah-fly-keys-layer-add-keys-to-keymap
  'xah-fly-leader-key-map "c h"
  (xah-fly-keys-layer-create-variable-and-function "recentf-open-files"
 						  '(recentf-open-files consult-recent-file)))
 
-(xah-fly-keys-layer-add-keys-to-keymap-name 
+(xah-fly-keys-layer-add-keys-to-keymap 
 'xah-fly-leader-key-map "9" (xah-fly-keys-layer-create-variable-and-function "ispell-word" 
 						 '(ispell-word
 						   flyspell-correct-wrapper)))
 
-(xah-fly-keys-layer-add-keys-to-keymap-name 
+(xah-fly-keys-layer-add-keys-to-keymap 
 'xah-fly-command-map "8" (xah-fly-keys-layer-create-variable-and-function "xah-extend-selection" 
 						 '(xah-extend-selection
 						   er/expand-region)))
 
-(xah-fly-keys-layer-add-keys-to-keymap-name 
+(xah-fly-keys-layer-add-keys-to-keymap 
 'xah-fly-leader-key-map "c u" (xah-fly-keys-layer-create-variable-and-function "xah-open-file-at-cursor" 
 						 '(xah-open-file-at-cursor cp/open-link)))
 

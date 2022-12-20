@@ -39,9 +39,9 @@
   "Where is the function to search in a file")
 
 (when xah-fly-keys-layer-better-place-isearch-forward
-  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-command-map "b"
+  (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "b"
 					      'xah-forward-right-bracket)
-  (xah-fly-keys-layer-add-keys-to-keymap-name
+  (xah-fly-keys-layer-add-keys-to-keymap
    'xah-fly-command-map xah-fly-keys-layer-better-place-isearch-forward-key
    'isearch-forward))
 
@@ -50,20 +50,20 @@
 `xah-forward-right-bracket', `xah-backward-left-bracket' and `xah-goto-matching-bracket'")
 
 (when xah-fly-keys-layer-better-place-for-pinky-parens
-  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-command-map "v"
+  (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "v"
 					      'xah-forward-right-bracket)
-  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-command-map "z"
+  (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "z"
 					      'xah-backward-left-bracket)
-  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-command-map "b"
+  (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "b"
 					      'xah-goto-matching-bracket))
 
 (defvar xah-fly-keys-layer-better-place-for-pinky-block nil "If t, switch
 `xah-end-of-line-or-block' and `xah-beginning-of-line-or-block'")
 
 (when xah-fly-keys-layer-better-place-for-pinky-block
-  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-command-map "d"
+  (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "d"
 					      'xah-end-of-line-or-block)
-  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-command-map "s"
+  (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "s"
 					      'xah-beginning-of-line-or-block))
 
 
@@ -71,7 +71,7 @@
 `xah-fly--tab-key-map' in SPC k (it's unbound)")
 
 (when xah-fly-keys-layer-better-place-tab-key-map
-  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "k"
+  (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "k"
 					      'xah-fly--tab-key-map)
   )
 
@@ -79,14 +79,14 @@
 `xah-end-of-line-or-block' by `xah-beginning-of-line-or-block'")
 
 (when xah-fly-keys-layer-better-place-avy-go-to-char
-  (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "s"
+  (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "s"
 					      'avy-goto-char-2)
   )
 
 
 ;;try, and it's okey !
 ;; (when t
-  ;; (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "TAB TAB"
+  ;; (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "TAB TAB"
 					      ;; 'tool-bar-mode)
   ;; )
 

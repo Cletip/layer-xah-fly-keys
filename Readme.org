@@ -23,13 +23,15 @@ Some of these features are not in the direct philosophy of xah-fly-keys, hence t
 Keep in mind that for any modified key location, the chosen location will be defined in dvorak. For example, the "u" key will be "f" in azerty.
 To quickly see a match : [[http://xahlee.info/emacs/misc/xah-fly-keys_tutorial.html][see here]].
 
+Some variables must be loaded before the extensions, others after. The indications for each extension will be indicated
+
 ** Add or modify a key to a special position
 
-Sometimes you just want to modify / add a command. In this case you just call the function "xah-fly-keys-layer-add-keys-to-keymap-name". 
+Sometimes you just want to modify / add a command. In this case you just call the function "xah-fly-keys-layer-add-keys-to-keymap". 
 Example: 
 
 #+begin_src emacs-lisp
-   (xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "SPC" 'xah-fly-keys-layer-personal-key-map)
+   (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "SPC" 'xah-fly-keys-layer-personal-key-map)
 #+end_src
 
 ** Change the default functions of xah-fly-keys
@@ -238,10 +240,10 @@ To overidde the default patern, you just have to do this:
 #+end_src
 
 Basically the location is on "SPC SPC".
-You can change this position with the "xah-fly-keys-layer-add-keys-to-keymap-name" function, for example like this: 
+You can change this position with the "xah-fly-keys-layer-add-keys-to-keymap" function, for example like this: 
 
 #+begin_src emacs-lisp
-(xah-fly-keys-layer-add-keys-to-keymap-name 'xah-fly-leader-key-map "n" 'xah-fly-keys-layer-personal-key-map)
+(xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "n" 'xah-fly-keys-layer-personal-key-map)
 #+end_src
 
 ** Better place for certain shortcut

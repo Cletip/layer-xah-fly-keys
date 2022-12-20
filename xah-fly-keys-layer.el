@@ -73,7 +73,7 @@
 
 ;;;;; Public
 
-(defun xah-fly-keys-layer-add-keys-to-keymap-name (KeymapName place command
+(defun xah-fly-keys-layer-add-keys-to-keymap (KeymapName place command
 							   &optional DirectQ)
   "Add a key binding to the keymap named KEYMAPNAME.
 
