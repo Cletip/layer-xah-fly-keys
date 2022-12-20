@@ -80,19 +80,20 @@ This function calls the function associated with the value of the variable `%s'"
  (xah-fly-keys-layer-create-variable-and-function "recentf-open-files"
 						  '(recentf-open-files consult-recent-file)))
 
-(xah-fly-keys-layer-add-keys-to-keymap 
-'xah-fly-leader-key-map "9" (xah-fly-keys-layer-create-variable-and-function "ispell-word" 
-						 '(ispell-word
-						   flyspell-correct-wrapper)))
+(xah-fly-keys-layer-add-keys-to-keymap
+ 'xah-fly-leader-key-map "9" (xah-fly-keys-layer-create-variable-and-function "ispell-word"
+									      '(ispell-word
+										flyspell-correct-wrapper)))
 
-(xah-fly-keys-layer-add-keys-to-keymap 
-'xah-fly-command-map "8" (xah-fly-keys-layer-create-variable-and-function "xah-extend-selection" 
-						 '(xah-extend-selection
-						   er/expand-region)))
+(xah-fly-keys-layer-add-keys-to-keymap
+ 'xah-fly-command-map "8" (xah-fly-keys-layer-create-variable-and-function "xah-extend-selection"
+									   '(xah-extend-selection
+									     er/expand-region)))
 
-(xah-fly-keys-layer-add-keys-to-keymap 
-'xah-fly-leader-key-map "c u" (xah-fly-keys-layer-create-variable-and-function "xah-open-file-at-cursor" 
-						 '(xah-open-file-at-cursor cp/open-link)))
+(xah-fly-keys-layer-add-keys-to-keymap
+ 'xah-fly-leader-key-map "c u" (xah-fly-keys-layer-create-variable-and-function "xah-open-file-at-cursor"
+										'(xah-open-file-at-cursor
+										  cp/open-link)))
 
 (xah-fly-keys-layer-add-keys-to-keymap
  'xah-fly-leader-key-map "s" (xah-fly-keys-layer-create-variable-and-function

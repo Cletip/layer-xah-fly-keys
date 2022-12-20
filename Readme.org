@@ -4,80 +4,50 @@
 This package is intended to extend the [[https://github.com/xahlee/xah-fly-keys][xah-fly-keys]] package.
 Some of these features are not in the direct philosophy of xah-fly-keys, hence the need to make a package.
 
-* Table of content :TOC:
+* Table of content :TOC_4:
 - [[#usage][Usage]]
   - [[#add-or-modify-a-key-to-a-special-position][Add or modify a key to a special position]]
-  - [[#change-the-default-functions-of-xah-fly-keys][Change the default functions of xah-fly-keys]]
   - [[#automatically-change-the-mode-when-call-a-function][Automatically change the mode when call a function]]
+  - [[#better-place-for-certain-shortcut][Better place for certain shortcut]]
+  - [[#change-the-default-functions-of-xah-fly-keys][Change the default functions of xah-fly-keys]]
+    - [[#just-with-a-setq][Just with a setq]]
+    - [[#with-the-customizasion-menu][With the customizasion menu]]
   - [[#keymap-for-each-major-mode][Keymap for each major mode]]
   - [[#personal-keymap-with-spc-spc][Personal keymap with SPC SPC]]
-  - [[#better-place-for-certain-shortcut][Better place for certain shortcut]]
-  - [[#misc][Misc]]
+  - [[#miscellaneous][Miscellaneous]]
+    - [[#open-line-line-enter][~open-line~ line <enter>]]
+    - [[#auto-save][Auto-save]]
 - [[#installation][Installation]]
-  - [[#straight-recommended][Straight (recommended)]]
+  - [[#use-package--straight-recommended][use-package + straight (recommended)]]
   - [[#install-manually-the-package][Install manually the package]]
   - [[#melpa][MELPA]]
 
 * Usage
 
 Keep in mind that for any modified key location, the chosen location will be defined in dvorak. For example, the "u" key will be "f" in azerty.
-To quickly see a match : [[http://xahlee.info/emacs/misc/xah-fly-keys_tutorial.html][see here]].
+To quickly see a match, [[http://xahlee.info/emacs/misc/xah-fly-keys_tutorial.html][see here]].
 
-Some variables must be loaded before the extensions, others after. The indications for each extension will be indicated
+*If there is no indication to change the variables before loading the extension, it means that variables can be changed after (require 'layer-xah-fly-key-<name-of-the-extension>).*
 
 ** Add or modify a key to a special position
 
-Sometimes you just want to modify / add a command. In this case you just call the function "xah-fly-keys-layer-add-keys-to-keymap". 
-Example: 
+Sometimes you just want to modify / add a command to a key.
+In this case, you can just call the function ~xah-fly-keys-layer-add-keys-to-keymap~.
+Example:
 
 #+begin_src emacs-lisp
    (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "SPC" 'xah-fly-keys-layer-personal-key-map)
 #+end_src
 
-** Change the default functions of xah-fly-keys
-
-Have you ever thought that sometimes, instead of calling the "isearch-forward" function, you would have preferred to call another function doing the same thing ? For example, consult-line ?
-
-It is now possible ! 
-This package has implemented variables, such as the "layer-xah-fly-key-isearch-forward-variable".
-There are several variables of this type, whose name corresponds to this: 
-"layer-xah-fly-key-default-function-in-xah-fly-keys-variable"
-You just have to modify this variable to call another function instead of the default function !
-To see all the others variables availables, see
-customize-group
-xah-fly-keys-layer
-
-To modify the value of theses variable, you have two possibilities : 
-
-*** Just with a setq
-
-An example is worth a thousand words:
-
-If you want the "consult-line" function instead of isearch, just do it like this : 
-
-#+begin_src emacs-lisp
-  (setq layer-xah-fly-key-isearch-forward-variable 'consult-line)
-#+end_src
-
-
-*** With the customizasion menu
-
-Do the command "customize-group", choose "xah-fly-keys-layer", and modify the variables as desired. 
-Do not hesitate to ask to add other functions.
-
 ** Automatically change the mode when call a function
 
 Sometimes, after calling a command, you want to be in insert mode, or in command mode. This is possible by giving a list to the variables
-- xah-fly-keys-layer-auto-command-mode (to activate the command mode after)
-- xah-fly-keys-layer-auto-insert-mode (to activate the insert mode after)
-
+- ~xah-fly-keys-layer-auto-command-mode~ (to activate the ~xah-fly-command-mode-activate~ after)
+- ~xah-fly-keys-layer-auto-insert-mode~ (to activate the ~xah-fly-insert-mode-activate~ after)
 
 Exemple : 
 #+begin_src emacs-lisp
-
-  ;; activate the extension
-  (require 'xah-fly-keys-layer-auto-mode)
-
+  ;; change variables before require the extension
   ;; chose the function
   (setq xah-fly-keys-layer-auto-command-mode
         '(
@@ -87,8 +57,6 @@ Exemple :
           dashboard-jump-to-bookmarks
           org-agenda-show-dashboard
           ))
-  ;; load the modification
-  (xah-fly-keys-layer-auto-command-mode-activate)
 
   ;; chose the function
   (setq xah-fly-keys-layer-auto-insert-mode
@@ -99,19 +67,84 @@ Exemple :
           org-insert-link
           recentf-open-files
           ))
-  ;; load the modification
-  (xah-fly-keys-layer-auto-insert-mode-activate)
+
+  ;; activate the extension
+  (require 'xah-fly-keys-layer-auto-mode)
 #+end_src
+
+** Better place for certain shortcut
+
+This part is about changes in the location of some features that I find relevant. 
+You can either disagree or enable them.
+
+#+begin_src emacs-lisp
+  ;; change variables before require the extension
+  (setq
+   ;;switch place for isearch-forward and xah-forward-right-bracket
+   xah-fly-keys-layer-better-place-isearch-forward t
+
+   ;; Use your pinky less
+   ;; switch xah-beginning-of-line-or-block and xah-end-of-line-or-block
+   xah-fly-keys-layer-better-place-for-pinky-block t
+
+   ;; swich xah-goto-matching-bracket, xah-forward-right-bracket and xah-backward-left-bracket to use the pinky the least
+   xah-fly-keys-layer-better-place-for-pinky-parens t
+
+   )
+
+  ;; activate the extension
+  (require 'xah-fly-keys-layer-better-place)
+#+end_src
+
+** Change the default functions of xah-fly-keys
+
+Have you ever thought that sometimes, instead of calling the ~isearch-forward~ function, you would have preferred to call another function doing the same thing ? For example, ~consult-line~ ?
+
+It is now possible ! 
+This package has implemented variables, such as the ~layer-xah-fly-key-isearch-forward-variable~.
+There are several variables of this type, whose name corresponds to this: 
+~layer-xah-fly-key-default-<function-in-xah-fly-keys>-variable~
+You just have to modify this variable to call another function instead of the default function ! You can even call a function that does another feature ! But, this is not recommended (xah-fly-key is usually very well done).
+To see all the others variables availables, ~M-x customize-group~ and then ~xah-fly-keys-layer~.
+
+To modify the value of theses variable, you have two possibilities : 
+
+*** Just with a setq
+
+An example is worth a thousand words:
+
+#+begin_src emacs-lisp
+  ;; load the extension
+  (require 'xah-fly-keys-layer-better-remap)
+
+  ;;change variables
+  (setq layer-xah-fly-key-isearch-forward-variable 'consult-line
+        ;;since I don't use save-buffer, I prefer this
+        layer-xah-fly-key-save-buffer-variable 'avy-goto-char-2)
+#+end_src
+
+
+
+*** With the customizasion menu
+
+Do the command ~customize-group~, choose ~xah-fly-keys-layer~, and modify the variables as desired.
+Or ~customize-variable~ and the ~xah-fly-keys-layer-<name-of-the-default-function>-variable~
+Do not hesitate to ask to add other functions.
 
 ** Keymap for each major mode
 
-Sometimes you want to have a specific keymap to the mode you are using. For example, with org-mode, you would like to have the "org-meta-return" function, while in emacs-lisp-mode, it would be the "eval-defun" function.
+Sometimes you want to have a specific keymap to the mode you are using. For example, with org-mode, you would like to have the ~org-meta-return~ function very accessible, while in emacs-lisp-mode, it would be the ~eval-defun~ function.
 
-For this purpose you just need two things: which mode will take new keys, and what are those new keys ?
+Each mode (the modes supported in this package) already has a default keymap, but you can override them just by doing this (here, example for the ):
 
-Each mode (the modes supported in this package) already has a default keymap, but you can override them just by doing this (here, example for the "org-mode-keymap"):
+Example with ~org-mode-keymap~ : 
 
 #+begin_src emacs-lisp
+  ;; load the extension
+  (require 'xah-fly-keys-layer-major-mode)
+  ;; then, configure the place where is activate
+  (setq xah-fly-keys-layer-major-mode-key (xah-fly--convert-kbd-str "i")) ;; default place
+  ;; override a default keymap : 
   (xah-fly--define-keys
    (define-prefix-command 'xah-fly-keys-layer-org-mode-keymap)
    '(
@@ -154,7 +187,7 @@ Each mode (the modes supported in this package) already has a default keymap, bu
      ;; ("t" . vulpea-find-backlink)
      ;; ("u" . org-capture-keymap) ;; TODO, mis dans SPC SPC
      ;; ("u" . org-capture)  ;; TODO changer
-   
+
      ("v" . org-insert-todo-heading)
      ;; ("v" . cp-vulpea-meta-fait-add)
      ("w" . consult-org-roam-forward-links)
@@ -164,27 +197,31 @@ Each mode (the modes supported in this package) already has a default keymap, bu
      ))
 #+end_src
 
-If you want to add a particular mode, make a pull request for the mode in question, and propagate an arrangement of the keys for the functions. 
+
+You can even add just one key like this : 
+
+#+begin_src emacs-lisp
+  (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-keys-layer-org-mode-keymap "SPC" 'tool-bar-mode)
+#+end_src
+
+If you want to add a particular mode, make a pull request / open an issue for the mode in question, and propagate an arrangement of the keys for the functions. 
 
 ** Personal keymap with SPC SPC
 
-A "personal" keymap is available, under the name "xah-fly-keys-layer-personal-key-map". 
-A default patern is available, but it may not be suitable for your needs.
+A personal keymap is available, under the name ~xah-fly-keys-layer-personal-key-map~.
 
-To use it :
+By default, the location is on ~SPC SPC~.
+You can change this position with the "xah-fly-keys-layer-add-keys-to-keymap" function, for example like this: 
 
 #+begin_src emacs-lisp
-  ;; load the extension
-  (require 'xah-fly-keys-layer-personal-keymap)
+(xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "n" 'xah-fly-keys-layer-personal-key-map)
 #+end_src
 
-To overidde the default patern, you just have to do this: 
 
+To use ~xah-fly-keys-layer-personal-key-map~, simply put this in :
 #+begin_src emacs-lisp
-
   ;; load the extension
   (require 'xah-fly-keys-layer-personal-keymap)
-
   ;; here, you define your command with each key.
   ;; for this example, just "RET" is used, and the key call the function "tool-bar-mode"
   (xah-fly--define-keys
@@ -236,67 +273,44 @@ To overidde the default patern, you just have to do this:
      ;; ("z" . nil)
      ))
 
-
 #+end_src
 
-Basically the location is on "SPC SPC".
-You can change this position with the "xah-fly-keys-layer-add-keys-to-keymap" function, for example like this: 
+** Miscellaneous
+
+*** ~open-line~ line <enter>
+
+Modify the key for ~open-line~ in xah-fly-keys to do exactly the same job of <enter> in the right context.
 
 #+begin_src emacs-lisp
-(xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "n" 'xah-fly-keys-layer-personal-key-map)
+  ;; change variable before require the extension
+  (setq xah-fly-keys-layer-misc-enter-open-line t)
+  (require 'xah-fly-keys-layer-misc)
 #+end_src
 
-** Better place for certain shortcut
-
-This part is about changes in the location of some features that I find relevant. 
-You can either disagree or enable them.
-To activate the changes, you have to "activate" a variable before loading layer-xah-fly-keys".
-Like that :
+*** Auto-save
 
 #+begin_src emacs-lisp
-  ;; pay attention to the "init"
-  (use-package xah-fly-keys-layer
-    :straight (xah-fly-keys-layer
-               :type git
-               :host github
-               :repo "Cletip/xah-fly-keys-layer")
-    :init
-    ;; before loading
-    (setq xah-fly-keys-layer-change-isearch-forward t)
-    (setq xah-fly-keys-layer-change-X t)
-    ;; etc
-    :config
-    ;; after loading
-    )
+  ;; change variable before require the extension
+  (setq xah-fly-keys-layer-misc-autosave t)
+  (require 'xah-fly-keys-layer-misc)
 #+end_src
-
-(Or make the modification and reload xah-fly-keys-layer)
-
-*** Isearch-forward
-
-** Misc
-
-*** Change
 
 * Installation
 
-You need to install and load xah-fly-keys first !
-Like that : 
+*You need to install and load xah-fly-keys first !*
+Like that (use-package + straight) : 
+
 #+begin_src emacs-lisp
   (use-package xah-fly-keys
     :straight (xah-fly-keys
                :type git
                :host github
-               :repo "xahlee/xah-fly-keys")
-    :config
-    ;;rest of the config here)
+               :repo "xahlee/xah-fly-keys"))
 #+end_src
 
 If you install manually, pay attention to install the last version of xah-fly-keys !
 
-** Straight (recommended)
-
-
+** use-package + straight (recommended)
 
 #+begin_src emacs-lisp
   (use-package xah-fly-keys-layer

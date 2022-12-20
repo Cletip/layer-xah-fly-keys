@@ -69,7 +69,7 @@
 ;; (add-to-list 'window-selection-change-functions #'cp-major-mode)
 ;; (add-hook 'window-selection-change-functions #'cp-major-mode)
 
-
+;; TODO add mode
 (xah-fly--define-keys
  (define-prefix-command 'xah-fly-keys-layer-org-mode-keymap)
  '(
