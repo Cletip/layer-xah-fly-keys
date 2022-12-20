@@ -94,6 +94,11 @@ This function calls the function associated with the value of the variable `%s'"
 'xah-fly-leader-key-map "c u" (xah-fly-keys-layer-create-variable-and-function "xah-open-file-at-cursor" 
 						 '(xah-open-file-at-cursor cp/open-link)))
 
+(xah-fly-keys-layer-add-keys-to-keymap
+ 'xah-fly-leader-key-map "s" (xah-fly-keys-layer-create-variable-and-function
+				"save-buffer"
+				'(save-buffer
+				  save-some-buffers)))
 
 
 (provide 'xah-fly-keys-layer-better-remap)
