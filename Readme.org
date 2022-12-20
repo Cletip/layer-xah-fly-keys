@@ -2,7 +2,7 @@
 
 
 This package is intended to extend the [[https://github.com/xahlee/xah-fly-keys][xah-fly-keys]] package.
-Some of these features are not in the direct philosophy of xah-fly-keys, hence the need to make a package.
+Some of these features are not in the direct philosophy of xah-fly-keys, hence the need to make a package. Each feature is an independent "extension".
 
 * Table of content :TOC_4:
 - [[#usage][Usage]]
