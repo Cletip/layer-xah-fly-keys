@@ -46,8 +46,29 @@ xah-fly-keys can do the job exactly like <enter> too")
           (kbd "RET")
 	'open-line)))
 
-  (add-to-list 'window-state-change-functions 'xah-fly-keys-layer-misc-enter-open-line))
+  (add-to-list 'window-state-change-functions
+	       'xah-fly-keys-layer-misc-enter-open-line))
 
+(defvar xah-fly-keys-layer-misc-autosave nil "If t, when enter in the command
+mode in xah-fly-keys, the buffer is saved")
+
+(when xah-fly-keys-layer-misc-autosave
+
+  (defvar xah-fly-keys-layer-misc-autosave-exclude '(gpg test) "List of mode to
+exclude the auto-save functionnality of xah-fly-keys-layer-misc")
+
+  (defun xah-fly-keys-layer-misc-autosave ()
+    "Save current buffer if it's a file and if the current mode is not in the
+    list of `xah-fly-keys-layer-misc-save-mode-exclude'"
+    (interactive)
+    (when (and
+	   (buffer-file-name) ;;check if it's a file
+	   ;; (not (string-equal (file-name-extension buffer-file-name) "gpg"))
+	   (not (member major-mode xah-fly-keys-layer-misc-save-mode-exclude))) ;; check
+      ;;if it's not in the list
+      (save-buffer)))
+
+  (add-hook 'xah-fly-command-mode-activate-hook 'xah-fly-keys-layer-misc-autosave))
 
 (provide 'xah-fly-keys-layer-misc)
 ;;; xah-fly-keys-layer-misc.el ends here
