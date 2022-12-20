@@ -66,15 +66,6 @@
   (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "s"
 					      'xah-beginning-of-line-or-block))
 
-
-(defvar xah-fly-keys-layer-better-place-tab-key-map nil "If t, map
-`xah-fly--tab-key-map' in SPC k (it's unbound)")
-
-(when xah-fly-keys-layer-better-place-tab-key-map
-  (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "k"
-					      'xah-fly--tab-key-map)
-  )
-
 (defvar xah-fly-keys-layer-better-place-avy-go-to-char nil "If t, replace
 `xah-end-of-line-or-block' by `xah-beginning-of-line-or-block'")
 
