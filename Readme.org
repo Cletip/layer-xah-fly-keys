@@ -1,16 +1,18 @@
 #+TITLE: xah-fly-keys-layer
 
 
-This package is intended to extend the xah-fly-keys package.
+This package is intended to extend the [[https://github.com/xahlee/xah-fly-keys][xah-fly-keys]] package.
+Some of these features are not in the direct philosophy of xah-fly-keys, hence the need to make a package.
 
 * Table of content :TOC:
 - [[#usage][Usage]]
-  - [[#add-a-key-to-a-special-position][Add a key to a special position]]
+  - [[#add-or-modify-a-key-to-a-special-position][Add or modify a key to a special position]]
   - [[#change-the-default-functions-of-xah-fly-keys][Change the default functions of xah-fly-keys]]
   - [[#automatically-change-the-mode-when-call-a-function][Automatically change the mode when call a function]]
-  - [[#shortcut-for-each-major-mode][Shortcut for each major mode]]
+  - [[#keymap-for-each-major-mode][Keymap for each major mode]]
   - [[#personal-keymap-with-spc-spc][Personal keymap with SPC SPC]]
   - [[#better-place-for-certain-shortcut][Better place for certain shortcut]]
+  - [[#misc][Misc]]
 - [[#installation][Installation]]
   - [[#straight-recommended][Straight (recommended)]]
   - [[#install-manually-the-package][Install manually the package]]
@@ -18,7 +20,10 @@ This package is intended to extend the xah-fly-keys package.
 
 * Usage
 
-** Add a key to a special position
+Keep in mind that for any modified key location, the chosen location will be defined in dvorak. For example, the "u" key will be "f" in azerty.
+To quickly see a match : [[http://xahlee.info/emacs/misc/xah-fly-keys_tutorial.html][see here]].
+
+** Add or modify a key to a special position
 
 Sometimes you just want to modify / add a command. In this case you just call the function "xah-fly-keys-layer-add-keys-to-keymap-name". 
 Example: 
@@ -96,14 +101,13 @@ Exemple :
   (xah-fly-keys-layer-auto-insert-mode-activate)
 #+end_src
 
-** Shortcut for each major mode
+** Keymap for each major mode
 
-Sometimes you want to have shortcuts specific to the mode you are using. For example, with org-mode, you would like to have the "org-meta-return" function, while in emacs-lisp-mode, it would be the "eval-defun" function.
+Sometimes you want to have a specific keymap to the mode you are using. For example, with org-mode, you would like to have the "org-meta-return" function, while in emacs-lisp-mode, it would be the "eval-defun" function.
 
 For this purpose you just need two things: which mode will take new keys, and what are those new keys ?
 
-Each mode (the modes supported in this package) already has basic shortcuts. 
-You can override them just by doing this (ici, exemple pour org-mode):
+Each mode (the modes supported in this package) already has a default keymap, but you can override them just by doing this (here, example for the "org-mode-keymap"):
 
 #+begin_src emacs-lisp
   (xah-fly--define-keys
@@ -268,10 +272,9 @@ Like that :
 
 *** Isearch-forward
 
+** Misc
 
-
-
-
+*** Change
 
 * Installation
 

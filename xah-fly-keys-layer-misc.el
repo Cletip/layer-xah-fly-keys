@@ -37,7 +37,6 @@ xah-fly-keys can do the job exactly like <enter> too")
 
   (defun xah-fly-keys-layer-misc-enter-open-line (_x)
     "DOCSTRING"
-    (interactive)
     (define-key xah-fly-command-map (xah-fly--convert-kbd-str "o")
       (if (or buffer-read-only
               (string-equal major-mode "minibuffer-mode")
