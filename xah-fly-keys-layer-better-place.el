@@ -34,8 +34,9 @@
 ;; define a variable only if the key is remap
 (defvar xah-fly-keys-layer-better-place-isearch-forward-key
   (if xah-fly-keys-layer-better-place-isearch-forward
-      "m"
-    "n")
+      (xah-fly--convert-kbd-str "m")
+    (xah-fly--convert-kbd-str "n")
+    )
   "Where is the function to search in a file")
 
 (when xah-fly-keys-layer-better-place-isearch-forward
