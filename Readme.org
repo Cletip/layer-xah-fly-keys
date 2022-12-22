@@ -45,7 +45,7 @@ In this package, you will have to set up some variables.
 *If there is no indication to change the variables before loading the extension, it means that you can load them whenever you want.*
 *But, in the other case, it will be necessary to load the variables BEFORE making
 (require 'layer-xah-fly-keys-<name-of-the-extension>)*.
-To see an example of loading a variable before the extension, you can see the code of the extension [[*Automatically change the mode when call a function][xah-fly-keys-layer-auto-mode]].
+To see an example of loading a variable before the extension, you can see the code of the extension [[#automatically-change-the-mode-when-call-a-function][xah-fly-keys-layer-auto-mode]].
 
 ** Add a command, or modify a key
 
