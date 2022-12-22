@@ -15,7 +15,7 @@ Some of these features are not in the direct philosophy of xah-fly-keys, hence t
   - [[#keymap-for-each-major-mode][Keymap for each major mode]]
   - [[#personal-keymap-with-spc-spc][Personal keymap with SPC SPC]]
   - [[#miscellaneous][Miscellaneous]]
-    - [[#open-line-line-enter][~open-line~ line <enter>]]
+    - [[#open-line-like-enter][~open-line~ like <enter>]]
     - [[#auto-save][Auto-save]]
 - [[#installation][Installation]]
   - [[#use-package--straight-recommended][use-package + straight (recommended)]]
@@ -118,7 +118,7 @@ An example is worth a thousand words:
   (require 'xah-fly-keys-layer-better-remap)
 
   ;;change variables
-  (setq xah-fly-key-layer--isearch-forward-variable 'consult-line
+  (setq xah-fly-key-layer-isearch-forward-variable 'consult-line
         ;;since I don't use save-buffer, I prefer this
         xah-fly-key-layer-save-buffer-variable 'avy-goto-char-2)
 #+end_src
@@ -210,14 +210,6 @@ If you want to add a particular mode, make a pull request / open an issue for th
 
 A personal keymap is available, under the name ~xah-fly-keys-layer-personal-key-map~.
 
-By default, the location is on ~SPC SPC~.
-You can change this position with the "xah-fly-keys-layer-add-keys-to-keymap" function, for example like this: 
-
-#+begin_src emacs-lisp
-(xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "n" 'xah-fly-keys-layer-personal-key-map)
-#+end_src
-
-
 To use ~xah-fly-keys-layer-personal-key-map~, simply put this in :
 #+begin_src emacs-lisp
   ;; load the extension
@@ -275,9 +267,17 @@ To use ~xah-fly-keys-layer-personal-key-map~, simply put this in :
 
 #+end_src
 
+
+By default, the location is on ~SPC SPC~.
+You can change this position with the "xah-fly-keys-layer-add-keys-to-keymap" function, for example like this: 
+
+#+begin_src emacs-lisp
+(xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "n" 'xah-fly-keys-layer-personal-key-map)
+#+end_src
+
 ** Miscellaneous
 
-*** ~open-line~ line <enter>
+*** ~open-line~ like <enter>
 
 Modify the key for ~open-line~ in xah-fly-keys to do exactly the same job of <enter> in the right context.
 
