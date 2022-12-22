@@ -118,9 +118,9 @@ An example is worth a thousand words:
   (require 'xah-fly-keys-layer-better-remap)
 
   ;;change variables
-  (setq xah-fly-key-layer-isearch-forward-variable 'consult-line
+  (setq xah-fly-keys-layer-isearch-forward-variable 'consult-line
         ;;since I don't use save-buffer, I prefer this
-        xah-fly-key-layer-save-buffer-variable 'avy-goto-char-2)
+        xah-fly-keys-layer-save-buffer-variable 'avy-goto-char-2)
 #+end_src
 
 

@@ -39,8 +39,8 @@ Moreover, this variable allows to let the user choose the function to call via
   the customization menu.
 Return the symbol of the function.
 Choices are a list of symbols that the user can choose. The base value is the first symbol in this list"
-  (let ((name-of-the-variable (concat "xah-fly-key-layer-" name "-variable"))
-	(name-of-the-function (concat "xah-fly-key-layer-" name
+  (let ((name-of-the-variable (concat "xah-fly-keys-layer-" name "-variable"))
+	(name-of-the-function (concat "xah-fly-keys-layer-" name
 				      "-function")))
     ;; the variable
     (eval (car (read-from-string
