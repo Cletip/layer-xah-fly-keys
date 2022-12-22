@@ -46,8 +46,14 @@ xah-fly-keys can do the job exactly like <enter> too")
           (kbd "RET")
 	'open-line)))
 
-  (add-to-list 'window-state-change-functions
-	       'xah-fly-keys-layer-misc-enter-open-line))
+  (if (>= emacs-major-version 28)
+      (add-to-list 'window-state-change-functions
+		   'xah-fly-keys-layer-misc-enter-open-line)
+    (progn
+      (add-to-list 'window-buffer-change-functions #'xah-fly-keys-layer-misc-enter-open-line)
+      (add-to-list 'window-selection-change-functions #'xah-fly-keys-layer-misc-enter-open-line)
+      (add-hook 'window-selection-change-functions #'xah-fly-keys-layer-misc-enter-open-line)))
+  )
 
 (defvar xah-fly-keys-layer-misc-autosave nil "If t, when enter in the command
 mode in xah-fly-keys, the buffer is saved")

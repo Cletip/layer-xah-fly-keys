@@ -64,6 +64,15 @@
 
 ;; Load the right mode
 (add-to-list 'window-state-change-functions 'xah-fly-keys-layer-major-mode-change)
+
+(if (>= emacs-major-version 28)
+    (add-to-list 'window-state-change-functions
+		 'xah-fly-keys-layer-major-mode-change)
+  (progn
+    (add-to-list 'window-buffer-change-functions #'xah-fly-keys-layer-major-mode-change)
+    (add-to-list 'window-selection-change-functions #'xah-fly-keys-layer-major-mode-change)
+    (add-hook 'window-selection-change-functions #'xah-fly-keys-layer-major-mode-change)))
+
 ;;old : 
 ;; (add-to-list 'window-buffer-change-functions #'cp-major-mode)
 ;; (add-to-list 'window-selection-change-functions #'cp-major-mode)
