@@ -72,8 +72,6 @@ This function calls the function associated with the value of the variable `%s'"
  'xah-fly-command-map xah-fly-keys-layer-better-place-isearch-forward-key
  (xah-fly-keys-layer-create-variable-and-function "isearch-forward"
 						  '(consult-line cp/consult-ripgrep-with-directory)))
-;; (setq layer-xah-fly-key-isearch-forward-variable 'isearch-forward)
-
 
 (xah-fly-keys-layer-add-keys-to-keymap
  'xah-fly-leader-key-map "c h"
@@ -96,10 +94,9 @@ This function calls the function associated with the value of the variable `%s'"
 										  cp/open-link)))
 
 (xah-fly-keys-layer-add-keys-to-keymap
- 'xah-fly-leader-key-map "s" (xah-fly-keys-layer-create-variable-and-function
-				"save-buffer"
-				'(save-buffer
-				  save-some-buffers)))
+ 'xah-fly-leader-key-map "s" (xah-fly-keys-layer-create-variable-and-function "save-buffer"
+									      '(save-buffer
+										save-some-buffers)))
 
 
 (provide 'xah-fly-keys-layer-better-remap)

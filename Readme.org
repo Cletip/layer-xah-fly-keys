@@ -9,7 +9,7 @@ Some of these features are not in the direct philosophy of xah-fly-keys, hence t
   - [[#add-a-command-or-modify-a-key][Add a command, or modify a key]]
   - [[#automatically-change-the-mode-when-call-a-function][Automatically change the mode when call a function]]
   - [[#better-place-for-certain-shortcut][Better place for certain shortcut]]
-  - [[#change-the-default-functions-of-xah-fly-keys][Change the default functions of xah-fly-keys]]
+  - [[#change-the-default-functions-of-xah-fly-keys-but-not-the-place][Change the default functions of xah-fly-keys, but not the place]]
     - [[#just-with-a-setq][Just with a setq]]
     - [[#with-the-customizasion-menu][With the customizasion menu]]
   - [[#keymap-for-each-major-mode][Keymap for each major mode]]
@@ -119,16 +119,16 @@ You can either disagree or enable them.
   (require 'xah-fly-keys-layer-better-place)
 #+end_src
 
-** Change the default functions of xah-fly-keys
+** Change the default functions of xah-fly-keys, but not the place
 
 Have you ever thought that sometimes, instead of calling the ~isearch-forward~ function, you would have preferred to call another function doing the same thing ? For example, ~consult-line~ ?
 
 It is now possible ! 
-This package has implemented variables, such as the ~layer-xah-fly-key-isearch-forward-variable~.
+This package has implemented variables, such as the ~layer-xah-fly-keys-isearch-forward-variable~.
 There are several variables of this type, whose name corresponds to this: 
-~layer-xah-fly-key-default-<function-in-xah-fly-keys>-variable~
+~layer-xah-fly-keys-default-<function-in-xah-fly-keys>-variable~
 You just have to modify this variable to call another function instead of the default function ! You can even call a function that does another feature ! But, this is not recommended (xah-fly-key is usually very well done).
-To see all the others variables availables, ~M-x customize-group~ and then ~xah-fly-keys-layer~.
+*To see all the others variables availables, ~M-x customize-group~ and then ~xah-fly-keys-layer~.*
 
 To modify the value of theses variable, you have two possibilities : 
 
