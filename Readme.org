@@ -6,7 +6,7 @@ Some of these features are not in the direct philosophy of xah-fly-keys, hence t
 
 * Table of content :TOC_4:
 - [[#usage][Usage]]
-  - [[#add-or-modify-a-key-to-a-special-position][Add or modify a key to a special position]]
+  - [[#add-a-command-or-modify-a-key][Add a command, or modify a key]]
   - [[#automatically-change-the-mode-when-call-a-function][Automatically change the mode when call a function]]
   - [[#better-place-for-certain-shortcut][Better place for certain shortcut]]
   - [[#change-the-default-functions-of-xah-fly-keys][Change the default functions of xah-fly-keys]]
@@ -24,19 +24,41 @@ Some of these features are not in the direct philosophy of xah-fly-keys, hence t
 
 * Usage
 
-Keep in mind that for any modified key location, the chosen location will be defined in dvorak. For example, the "u" key will be "f" in azerty.
+Keep in mind that for any *modified key location*, the chosen *location will be defined in dvorak*. For example, the "u" key will be "f" in azerty.
 To quickly see a match, [[http://xahlee.info/emacs/misc/xah-fly-keys_tutorial.html][see here]].
 
-*If there is no indication to change the variables before loading the extension, it means that variables can be changed after (require 'layer-xah-fly-key-<name-of-the-extension>).*
+This package works by extension. 
+It is therefore always necessary, after downloading it, to load it:
+#+begin_src emacs-lisp
+  (require 'xah-fly-keys-layer)
+#+end_src
 
-** Add or modify a key to a special position
+
+And then, load the extension you want. For example :
+
+#+begin_src emacs-lisp
+  (require 'xah-fly-keys-layer-auto-mode) ;; one extension is activate
+  (require 'xah-fly-keys-layer-better-place);; a second extension is activate
+#+end_src
+
+In this package, you will have to set up some variables.
+*If there is no indication to change the variables before loading the extension, it means that you can load them whenever you want.*
+*But, in the other case, it will be necessary to load the variables BEFORE making
+(require 'layer-xah-fly-key-<name-of-the-extension>)*.
+To see an example of loading a front variable, you can see this [[exemple-of-load-before][example]].
+
+** Add a command, or modify a key
 
 Sometimes you just want to modify / add a command to a key.
 In this case, you can just call the function ~xah-fly-keys-layer-add-keys-to-keymap~.
-Example:
+Example if you want the tool bar mode in "SPC SPC":
 
 #+begin_src emacs-lisp
-   (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-leader-key-map "SPC" 'xah-fly-keys-layer-personal-key-map)
+  (xah-fly-keys-layer-add-keys-to-keymap ;; name of the function to make the modification
+   'xah-fly-leader-key-map ;; the "first SPC". It's the layer after "SPC". Consult xah-fly-key for more detail
+   "SPC"			 ;; where go the command
+   'tool-bar-mode		 ;; name of the command
+   )
 #+end_src
 
 ** Automatically change the mode when call a function
@@ -45,10 +67,11 @@ Sometimes, after calling a command, you want to be in insert mode, or in command
 - ~xah-fly-keys-layer-auto-command-mode~ (to activate the ~xah-fly-command-mode-activate~ after)
 - ~xah-fly-keys-layer-auto-insert-mode~ (to activate the ~xah-fly-insert-mode-activate~ after)
 
-Exemple : 
+Exemple :
+#+NAME: exemple-of-load-before
 #+begin_src emacs-lisp
   ;; change variables before require the extension
-  ;; chose the function
+  ;; chose the function to activate the command-mode
   (setq xah-fly-keys-layer-auto-command-mode
         '(
           dashboard-jump-to-recents
@@ -58,7 +81,7 @@ Exemple :
           org-agenda-show-dashboard
           ))
 
-  ;; chose the function
+  ;; chose the function to activate the insert-mode
   (setq xah-fly-keys-layer-auto-insert-mode
         '(
           execute-extended-command-for-buffer
