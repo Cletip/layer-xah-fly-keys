@@ -354,8 +354,12 @@ If you install manually, pay attention to install the last version of xah-fly-ke
 ** use-package + straight (recommended)
 
 #+begin_src emacs-lisp
-  (use-package xah-fly-keys-layer
-    :straight (xah-fly-keys-layer :type git :host github :repo "Cletip/xah-fly-keys-layer"))
+     (use-package xah-fly-keys-layer
+    :after xah-fly-keys
+    :straight (xah-fly-keys-layer
+               :type git
+               :host github
+               :repo "Cletip/xah-fly-keys-layer"))
 #+end_src
 
 ** Install manually the package

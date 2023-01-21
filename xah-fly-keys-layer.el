@@ -55,6 +55,7 @@
 
 ;; (require 'xah-fly-keys-layer-better-place)
 ;; (require 'bar)
+(require 'xah-fly-keys)
 
 ;;;; Customization
 

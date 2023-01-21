@@ -28,7 +28,7 @@
 ;; This package adds various useful features to xah-fly-keys
 ;;; Code:
 
-(require 'xah-fly-keys)
+(require 'xah-fly-keys-layer)
 
 (defvar xah-fly-keys-layer-misc-enter-open-line nil "When t, open-line in
 xah-fly-keys can do the job exactly like <enter> too")
