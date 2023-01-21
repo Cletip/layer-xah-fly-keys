@@ -73,7 +73,11 @@ exclude the auto-save functionnality of xah-fly-keys-layer-misc")
       ;;if it's not in the list
       (save-buffer)))
 
-  (add-hook 'xah-fly-command-mode-activate-hook 'xah-fly-keys-layer-misc-autosave))
+  (add-hook 'xah-fly-command-mode-activate-hook
+	    'xah-fly-keys-layer-misc-autosave))
+
+(when xah-fly-keys-layer-embark
+  (xah-fly-keys-layer-add-keys-to-keymap
+   'xah-fly-command-map "i" 'embark-act))
 
 (provide 'xah-fly-keys-layer-misc)
-;;; xah-fly-keys-layer-misc.el ends here

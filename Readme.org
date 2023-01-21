@@ -15,6 +15,7 @@ Some of these features are not in the direct philosophy of xah-fly-keys, hence t
   - [[#keymap-for-each-major-mode][Keymap for each major mode]]
   - [[#personal-keymap-with-spc-spc][Personal keymap with SPC SPC]]
   - [[#miscellaneous][Miscellaneous]]
+    - [[#direct-acces-to-embark-act][Direct acces to embark-act]]
     - [[#open-line-like-enter][~open-line~ like <enter>]]
     - [[#auto-save][Auto-save]]
 - [[#installation][Installation]]
@@ -158,8 +159,12 @@ Do not hesitate to ask to add other functions.
 
 Sometimes you want to have a specific keymap to the mode you are using. For example, with org-mode, you would like to have the ~org-meta-return~ function very accessible, while in emacs-lisp-mode, it would be the ~eval-defun~ function.
 
-Each mode (the modes supported in this package) already has a default keymap, but you can override them just by doing this (here, example for the ):
+Note that if you activate this feature, this is happening :
+- to activate the xah-fly-keys-layer-X-mode-keymap, press "x" (in Dvorak)
+- ~xah-toggle-letter-case~ is moved to "SPC-x" (in Dvorak)
+- ~xah-toggle-previous-letter-case~ is removed
 
+Each mode (the modes supported in this package) already has a default keymap, but you can override them.
 Example with ~org-mode-keymap~ : 
 
 #+begin_src emacs-lisp
@@ -299,6 +304,18 @@ You can change this position with the "xah-fly-keys-layer-add-keys-to-keymap" fu
 #+end_src
 
 ** Miscellaneous
+
+
+*** Direct acces to embark-act
+
+Acces with "i" (in Dvorak).
+
+#+begin_src emacs-lisp
+  ;; change variable before require the extension
+  (setq xah-fly-keys-layer-embark t)
+  (require 'xah-fly-keys-layer-misc)
+#+end_src
+
 
 *** ~open-line~ like <enter>
 

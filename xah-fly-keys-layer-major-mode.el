@@ -33,11 +33,12 @@
 
 (require 'xah-fly-keys)
 
-(defvar xah-fly-keys-layer-major-mode-key (xah-fly--convert-kbd-str "i") "Where to place the key to enter the shortcuts of the mode")
+(defvar xah-fly-keys-layer-major-mode-key (xah-fly--convert-kbd-str "x") "Where to place the key to enter the shortcuts of the mode")
+
+(xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "SPC x" 'xah-toggle-letter-case)
 
 (defun xah-fly-keys-layer-no-major-mode ()
-  (message "There is no custom keymap for the major mode  %s. You can do a pull request" major-mode)
-  )
+  (message "There is no custom keymap for the major mode  %s. You can do a pull request" major-mode))
 
 (defun xah-fly-keys-layer-major-mode-change (&rest args)
   "Call different commands depending on what's current major mode."
@@ -164,11 +165,46 @@
    ("w" . org-capture-goto-last-stored)
    ;; ("x" . xah-toggle-letter-case)
    ;; ("x" . xah-toggle-previous-letter-case)
-   
    ;; ("y" . popup-kill-ring)
    ("z" . org-agenda-archive)
    )
  )
+
+(xah-fly--define-keys
+ (define-prefix-command 'xah-fly-keys-layer-elisp-mode-keymap)
+ '(
+   ;; ("a" . mark-whole-buffer)
+   ;; ("b" . end-of-buffer)
+   ;; ("c" . org-agenda-set-tags)
+   ;; ("d" . org-mode-action-keymap)
+   ("e" . eval-defun)
+   ;; ("f" . xah-search-current-word)
+   ("g" . sp-forward-slurp-sexp)
+   ("h" . backward-sexp)
+   ;; ("i" . kill-line)
+   ;; ("j" . xah-copy-all-or-region)
+   ("j" . sp-previous-sexp)
+   ;; ("k" . xah-paste-or-paste-previous)
+   ;; ("l" . sp-next-sexp)
+   ;; ("m" . org-refile-goto-last-stored)
+   ("n" . forward-sexp)
+   ("o" . edebug-defun)
+   ;; ("p" . query-replace)
+   ;; ("q" . xah-cut-all-or-region)
+   ("r" . sp-backward-slurp-sexp)
+   ;; ("s" . save-buffer)
+   ;; ("s" . winner-undo);;touche dispo
+   ;; ("s" . major-mode-hydra) ;;perso
+   ;; ("t" . org-agenda-schedule)
+   ;; ("u" . switch-to-buffer)
+   ;; v
+   ;; ("w" . org-capture-goto-last-stored)
+   ;; ("x" . xah-toggle-letter-case)
+   ;; ("x" . xah-toggle-previous-letter-case)
+
+   ;; ("y" . popup-kill-ring)
+   ;; ("z" . org-agenda-archive)
+   ))
 
 (provide 'xah-fly-keys-layer-major-mode)
 ;;; xah-fly-keys-layer-major-mode.el ends here
