@@ -36,7 +36,10 @@
 (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "SPC x" 'xah-toggle-letter-case)
 
 (defun xah-fly-keys-layer-no-major-mode ()
-  (message "There is no custom keymap for the major mode  %s. You can do a pull request" major-mode))
+  "Function to call when there is no keymap mode to this major"
+  (interactive)
+  (message "There is no custom keymap for the major mode  %s. You can do a pull
+  request" major-mode))
 
 (defun xah-fly-keys-layer-major-mode-change (&rest args)
   "Call different commands depending on what's current major mode."
@@ -59,7 +62,9 @@
    ((string-equal major-mode "emacs-lisp-mode")
     (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-elisp-mode-keymap))
    (t
-    (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-no-major-mode))))
+    (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "x" 'xah-fly-keys-layer-no-major-mode))))
+
+
 
 ;; Load the right mode
 (add-to-list 'window-state-change-functions 'xah-fly-keys-layer-major-mode-change)
