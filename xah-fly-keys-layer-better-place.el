@@ -65,7 +65,7 @@
   (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "d"
 					      'xah-end-of-line-or-block)
   (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "s"
-					      'xah-beginning-of-line-or-block))
+					 'xah-beginning-of-line-or-block))
 
 (provide 'xah-fly-keys-layer-better-place)
 ;;; xah-fly-keys-layer-better-place.el ends here

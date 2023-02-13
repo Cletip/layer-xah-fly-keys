@@ -98,6 +98,20 @@ This function calls the function associated with the value of the variable `%s'"
 									      '(save-buffer
 										save-some-buffers)))
 
+(xah-fly-keys-layer-add-keys-to-keymap
+ 'xah-fly-leader-key-map "h h" (xah-fly-keys-layer-create-variable-and-function "describe-function"
+										'(describe-function
+										  helpful-function
+										  helpful-symbol
+										  helpful-at-point)))
+
+(xah-fly-keys-layer-add-keys-to-keymap
+ 'xah-fly-leader-key-map "h n" (xah-fly-keys-layer-create-variable-and-function "describe-variable"
+										'(describe-variable
+										  helpful-variable
+										  helpful-symbol
+										  helpful-at-point)))
+
 
 (provide 'xah-fly-keys-layer-better-remap)
 ;;; xah-fly-keys-layer-better-remap.el ends here

@@ -7,7 +7,7 @@ Some of these features are not in the direct philosophy of xah-fly-keys, hence t
 * Table of content :TOC_4:
 - [[#usage][Usage]]
   - [[#add-a-command-or-modify-a-key][Add a command, or modify a key]]
-  - [[#automatically-change-the-mode-when-call-a-function][Automatically change the mode when call a function]]
+  - [[#automatically-change-the-command-or-insert-mode-when-call-a-function][Automatically change the command or insert mode when call a function]]
   - [[#better-place-for-certain-shortcut][Better place for certain shortcut]]
   - [[#change-the-default-functions-of-xah-fly-keys-but-not-the-place][Change the default functions of xah-fly-keys, but not the place]]
     - [[#just-with-a-setq][Just with a setq]]
@@ -62,7 +62,7 @@ Example if you want the tool bar mode in "SPC SPC":
    )
 #+end_src
 
-** Automatically change the mode when call a function
+** Automatically change the command or insert mode when call a function
 
 Sometimes, after calling a command, you want to be in insert mode, or in command mode. This is possible by giving a list to the variables
 - ~xah-fly-keys-layer-auto-command-mode~ (to activate the ~xah-fly-command-mode-activate~ after)
@@ -147,8 +147,6 @@ An example is worth a thousand words:
         xah-fly-keys-layer-save-buffer-variable 'avy-goto-char-2)
 #+end_src
 
-
-
 *** With the customizasion menu
 
 Do the command ~customize-group~, choose ~xah-fly-keys-layer~, and modify the variables as desired.
@@ -171,7 +169,7 @@ Example with ~org-mode-keymap~ :
   ;; load the extension
   (require 'xah-fly-keys-layer-major-mode)
   ;; then, configure the place where is activate
-  (setq xah-fly-keys-layer-major-mode-key (xah-fly--convert-kbd-str "i")) ;; default place
+  (setq xah-fly-keys-layer-major-mode-key (xah-fly--convert-kbd-str "x")) ;; default place for dvorak
   ;; override a default keymap : 
   (xah-fly--define-keys
    (define-prefix-command 'xah-fly-keys-layer-org-mode-keymap)
@@ -312,7 +310,9 @@ Acces with "i" (in Dvorak).
 
 #+begin_src emacs-lisp
   ;; change variable before require the extension
-  (setq xah-fly-keys-layer-embark t)
+  (setq xah-fly-keys-layer-embark t
+        ;; maybe you need to change the key to cycle
+        embark-cycle-key (xah-fly--convert-kbd-str "i"))
   (require 'xah-fly-keys-layer-misc)
 #+end_src
 

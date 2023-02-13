@@ -135,6 +135,42 @@
    ;; ("z" . "v")
    ))
 
+(xah-fly--define-keys
+ (define-prefix-command 'org-mode-babel-keymap)
+ '(
+   ;; ("SPC" . cp/org-edit-special-capture-src-dwim)
+
+   ;; ("a" . mark-whole-buffer)
+   ;; ("b" . end-of-buffer)
+   ;; ("c" . org-agenda-set-tags)
+   ;; ("d" . org-mode-action-keymap)
+   ("e" . org-babel-demarcate-block)
+   ;; ("f" . xah-search-current-word)
+   ("g" . org-babel-tangle)
+   ("h" . org-babel-demarcate-block)
+   ;; ("i" . kill-line)
+   ;; ("j" . xah-copy-all-or-region)
+   ;; ("j" . winner-undo)
+   ;; ("k" . xah-paste-or-paste-previous)
+   ;; ("l" . recenter-top-bottom)
+   ;; ("m" . org-refile-goto-last-stored)
+   ("n" . org-babel-insert-header-arg)
+   ("o" . org-babel-mark-block)
+   ;; ("p" . query-replace)
+   ;; ("q" . xah-cut-all-or-region)
+   ;; ("r" . org-insert-link)
+   ;; ("s" . save-buffer)
+   ;; ("t" . cp/org-edit-special-src-dwim)
+   ;; ("u" . switch-to-buffer)
+   ;; v
+   ;; ("w" . org-capture-goto-last-stored)
+   ;; ("x" . xah-toggle-letter-case)
+   ;; ("x" . xah-toggle-previous-letter-case)
+
+   ;; ("y" . popup-kill-ring)
+   ;; ("z" . org-agenda-archive)
+   )
+ )
 
 ;; org-agenda
 (xah-fly--define-keys
