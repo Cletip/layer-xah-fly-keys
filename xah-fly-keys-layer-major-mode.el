@@ -62,7 +62,7 @@
    ((string-equal major-mode "emacs-lisp-mode")
     (define-key xah-fly-command-map (kbd xah-fly-keys-layer-major-mode-key) 'xah-fly-keys-layer-elisp-mode-keymap))
    (t
-    (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map "x" 'xah-fly-keys-layer-no-major-mode))))
+    (xah-fly-keys-layer-add-keys-to-keymap 'xah-fly-command-map xah-fly-keys-layer-major-mode-key 'xah-fly-keys-layer-no-major-mode))))
 
 
 
